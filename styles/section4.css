@@ -1,0 +1,147 @@
+/* Типографика заголовков */
+h2 { 
+	font-family: 'Bebas Neue', sans-serif; /* משפחת פונט */
+	font-size: 70px; /* גודל הפונט */
+	color: var(--dark-gray); /* צבע הפונט */
+	margin-bottom: 20px; /* רווח מלמטה */
+	line-height: 1.2; /* גובה שורה */
+}
+
+.section4__text, .section4__text--black {
+	font-family: 'Roboto Flex', sans-serif; /* משפחת פונט לטקסט */
+	font-size: 17px; /* גודל הפונט */
+	margin: 0; /* ביטול מרווחים חיצוניים */
+	padding-bottom: 10px; /* רווח מלמטה */
+	line-height: 26px; /* גובה שורה בטקסט */
+}
+
+.section4__highlight {
+	color: var(--sky-blue); /* צבע הדגשה */
+}
+
+/* Section Styling */
+.section4 {
+	position: relative; /* מיקום יחסי */
+	width: 100%; /* רוחב 100% */
+	display: flex; /* תצוגת Flex */
+	flex-direction: column; /* כיוון תצוגה אנכי */
+	padding: 20px 5%; /* רווחים פנימיים */
+	margin-bottom: 50px; /* רווח חיצוני מלמטה */
+	box-sizing: border-box; /* מביא בחשבון את ריווחים */
+}
+
+.section4__container {
+	display: flex; /* תצוגת Flex ליישור אופקי */
+	gap: 100px; /* רווח בין עמודות */
+	width: 100%; /* רוחב מלא */
+	box-sizing: border-box; /* מביא בחשבון את ריווחים */
+	padding: 50px 5%; /* ריווח פנימי */
+	align-items: flex-start; /* יישור קצה עליון */
+}
+
+.section4__column--left {
+	flex: 0 0 40%; /* אחוז מרחב 40% */
+	max-width: 40%; /* רוחב מקסימלי */
+	align-self: flex-start; /* יישור לפי קצה עליון */
+}
+
+.section4__column--right {
+	flex: 1; /* אחוז מרחב נשאר */
+	max-width: 43%; /* רוחב מקסימלי */
+	align-self: flex-start; /* יישור לפי קצה עליון */
+}
+
+.section4__slider {
+	position: relative; /* מיקום יחסי */
+	overflow: hidden; /* ביטול גלילה */
+	width: 100%; /* רוחב מלא */
+	margin-top: 50px; /* רווח מלמעלה */
+}
+
+.section4__slider-container {
+	display: flex; /* תצוגת Flex */
+	flex-direction: row; /* כיוון אופקי */
+	gap: 20px; /* רווח בין סליידים */
+	transition: transform 0.5s ease; /* מעבר חלק */
+}
+
+.section4__slide {
+	width: 90%; /* רוחב סלייד */
+	min-width: 25%; /* רוחב מינימלי */
+	flex: 0 0 auto; /* גודל קבוע */
+	position: relative; /* מיקום יחסי */
+}
+
+.section4__slide img {
+	width: 100%; /* רוחב מלא */
+	height: auto; /* גובה אוטומטי */
+	object-fit: cover; /* חיתוך לפי גודל */
+	position: relative; /* מיקום יחסי */
+}
+
+/* Стили для кнопки Contact Us */
+.section4__cta--outline {
+	position: absolute; /* מיקום מוחלט */
+	bottom: 100px; /* מרחק מלמטה */
+	left: 65px; /* מרחק משמאל */
+	padding: 12px 36px; /* ריווח פנימי */
+	font-family: "Bebas Neue", sans-serif; /* משפחת פונט */
+	font-size: 22px; /* גודל פונט */
+	text-transform: uppercase; /* אותיות גדולות */
+	text-align: center; /* יישור טקסט למרכז */
+	cursor: pointer; /* מצביע יד */
+	text-decoration: none; /* ביטול קו תחתון */
+	transition: all 0.3s ease; /* מעבר חלק */
+	border: 2px solid #87CEEB; /* צבע גבול */
+	color: #ffffff; /* צבע טקסט לבן */
+	background-color: transparent; /* רקע שקוף */
+	z-index: 2; /* מעל התמונה */
+}
+
+.section4__cta--outline:hover {
+	background-color: #87CEEB; /* צבע רקע בכחול בעת מעבר עכבר */
+	color: white; /* צבע טקסט לבן */
+	text-decoration: none; /* ביטול קו תחתון */
+}
+
+.section4__cta--outline::before {
+	content: ""; /* תוכן ריק */
+	position: absolute; /* מיקום מוחלט */
+	top: -5px; /* מרחק מלמעלה */
+	left: -5px; /* מרחק משמאל */
+	right: -5px; /* מרחק מימין */
+	bottom: -5px; /* מרחק מלמטה */
+	border: 2px solid transparent; /* גבול שקוף */
+	transition: all 0.3s ease; /* מעבר חלק */
+}
+
+.section4__cta--outline:hover::before {
+	top: -10px; /* מרחק מלמעלה בהגדלה */
+	left: -10px; /* מרחק משמאל בהגדלה */
+	right: -10px; /* מרחק מימין בהגדלה */
+	bottom: -10px; /* מרחק מלמטה בהגדלה */
+	border-color: #87CEEB; /* צבע גבול בעת מעבר עכבר */
+}
+
+.section4__controls {
+	position: absolute; /* מיקום מוחלט */
+	top: 50%; /* באמצע בגובה */
+	width: 100%; /* רוחב מלא */
+	display: flex; /* תצוגת Flex */
+	justify-content: space-between; /* יישור בין קצוות */
+	transform: translateY(-50%); /* הורדה ב-50% למרכז */
+	z-index: 2; /* מעל התוכן */
+}
+
+.section4__control-button {
+	background: rgba(0, 0, 0, 0.5); /* רקע כהה שקוף */
+	color: var(--text-white); /* צבע טקסט לבן */
+	border: none; /* ללא גבול */
+	padding: 10px; /* ריווח פנימי */
+	cursor: pointer; /* מצביע יד */
+	transition: background 0.3s ease; /* מעבר חלק */
+}
+
+.section4__control-button:hover {
+	background: var(--sky-blue); /* רקע כחול בעת מעבר עכבר */
+}

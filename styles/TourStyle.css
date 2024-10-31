@@ -1,0 +1,413 @@
+﻿/* ייבוא גופנים */
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto+Flex:wght@400&display=swap');
+
+/* logo+ headr*/
+
+
+
+body {
+    font-family: 'Roboto Flex', sans-serif; /* גופן כללי של הדף */
+    padding: 5px; /* רווח פנימי של 5 פיקסלים בתוך התוכן */
+    display: flex; /* הופך את מבנה הדף למבוסס Flexbox כדי לסדר את שני הצדדים */
+    background-color: #F0F0F0; /* צבע רקע לבן מלוכלך */
+    margin: 0 auto;
+}
+
+
+
+/* קונטיינר לתמונות מתחלפות */
+
+.image-slider-container {
+    width: 100%; /* התמונות תתפוס את כל רוחב החלק השמאלי */
+    height: 420px; /* גובה הקונטיינר לתמונות */
+    position: relative; /* המיקום יהיה יחסי */
+    overflow: hidden; /* לא נרצה שתמונות אחרות יחרגו מהשטח */
+    margin-bottom: 50px; /* רווח בין התמונות לתוכן */
+}
+
+.slider-image {
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    transition: opacity 1s ease-in-out; /* מעבר רך בין התמונות */
+}
+    /* כל תמונה */
+    .slider-image.active {
+        opacity: 1;
+    }
+/* תמונה נראית */
+.image-container {
+    box-shadow: -3px 0 5px rgba(0, 0.1, 0.1, 0.1); /* צל לעטיפה של התמונת  */
+    padding: 15px 15px 15px 15px;
+    text-align: center;
+}
+
+    .image-container img {
+        max-width: 100%;
+        height: auto;
+    }
+
+
+
+/* עיצוב כותרת מרכזית גלובלית  */
+
+.heading { /* סלקטור למחלקה   */
+    font-size: 100px; /* גודל הכותרת */
+    margin: 0px; /* מרווח מסביב לכותרת */
+    font-weight: bold; /* הפיכת הכותרת לבולטת */
+}
+
+h1 span {
+    text-align: left; /* יישור לשמאל */
+    font-size: inherit; /* ירושה של גודל הפונט מהכותרת */
+    font-weight: inherit; /* ירושה של עובי הפונט מהכותרת */
+}
+
+.gray-border {
+    color: #363839; /* צבע אפור כהה */
+}
+
+.blue-border {
+    color: #87CEEB; /* צבע כחול בהיר */
+    text-shadow: -1px -1px 1 #363839, /* צל לכיוון שמאל למעלה */
+    1px -1px 0 #363839, /* צל לכיוון ימין למעלה */
+    -1px 1px 0 #363839, /* צל לכיוון שמאל למטה */
+    1px 1px 0 #363839; /* צל לכיוון ימין למטה */
+}
+
+.outlined-text {
+    color: white; /* צבע הטקסט של המילה יהיה לבן */
+    text-shadow: -1px -1px 0 #363839, /* צל לכיוון שמאל למעלה */
+    1px -1px 0 #363839, /* צל לכיוון ימין למעלה */
+    -1px 1px 0 #363839, /* צל לכיוון שמאל למטה */
+    1px 1px 0 #363839; /* צל לכיוון ימין למטה */
+}
+
+.gold-brown {
+    color: #B19F70 /*צבע חום זהוב*/
+}
+/*  עיצוב כותרות */
+h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 60px;
+    color: #363839; /* צבע אפור כהה */
+    margin: 0;
+}
+
+h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 70px;
+    color: #363839; /* צבע טקסט אפור כהה */
+    margin: 0;
+}
+
+h3 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 35px;
+    color: #363839; /* צבע טקסט אפור כהה */
+    margin: 0;
+}
+
+p {
+    font-family: 'Roboto Flex', sans-serif;
+    font-size: 17px;
+    color: #363839; /* צבע טקסט אפור כהה */
+}
+
+
+/* קונטיינר לטבלה שבועית בהם אפשר להזמין את הטיול */
+
+
+.table-container {
+    padding: 5px 5px 5px 5px;
+    justify-content: left; /* ממרכז את הטבלה */
+    text-align: center; /* יישור מרכזי לטקסט */
+    border-width: 50px; /* רקע כללי של הטבלה */
+    border-color: green;
+    box-shadow: 15px 5px 15px rgba(0, 0, 0, 0.1);
+    margin-bottom: 50px;
+}
+
+.departure-days {
+    width: 100%; /* הטבלה תתפוס את כל רוחב המיכל */
+    font-family: 'Roboto Flex', sans-serif; /* גופן עבור הטקסט בטבלה */
+    background-color: lightgray;
+    border-collapse: collapse; /* איחוד גבולות התאים */
+}
+
+    .departure-days td {
+        width: 80px; /* רוחב כל תא */
+        height: 70px; /* גובה כל תא */
+        text-align: center; /* יישור הטקסט במרכז התא */
+        vertical-align: middle; /* יישור אנכי לטקסט במרכז התא */
+        font-size: 18px; /* גודל הטקסט */
+        border: 2px solid #F0F0F0; /* גבול אפור כהה סביב כל תא */
+    }
+        /* עיצוב התאים של הימים הרגילים */
+        .departure-days td.active {
+            background-color: #B19F70; /* רקע חום-זהב לימים פעילים */
+            color: white; /* טקסט לבן לימים פעילים */
+            font-weight: bold; /* טקסט מודגש יותר ליום שבת */
+        }
+/* עיצוב לימים הפעילים */
+
+
+.booking-form button:disabled {
+    opacity: 50%;
+    cursor: not-allowed;
+        
+}
+/*טופס הזמנה*/
+
+.booking-form {
+    background-color: #87CEEB; /* צבע רקע של טופס ההזמנה: תכלת */
+    padding: 20px 20px 20px 20px; /* ריווח פנימי של 20 פיקסלים מכל הצדדים (עליון, ימין, תחתון ושמאל) */
+    border-radius: 5px; /* פינות מעוגלות של 5 פיקסלים לטופס */
+    box-shadow: 0 0 0px rgba(0, 0, 0, 0.1); /* מסגרת עדינה לטופס הזנה שעוטפת אותו" */
+    margin-left: 20px;
+    position: sticky;
+    top: 20px; /* The form will stick 20px from the top of the viewport */
+    z-index: 1000; /* Ensures the form appears above other content */
+    flex: 0 1 30%;
+}
+
+
+    .booking-form h2, .booking-form h3 {
+        margin-top: 0; /* עושה מרווחים <h2> ו-<h3> בתוך טופס ההזמנה */
+    }
+
+    .booking-form label, .booking-form input, .booking-form button {
+        display: block;
+        width: 100%;
+        margin-bottom: 0px;
+        padding: 5px 5px 5px 5px;
+    }
+
+
+
+
+/* עיצוב לבחירת המטבע */
+.currency-options {
+    display: flex;
+    align-items: center;
+    gap: 5px; /* רווח קטן בין הכותרת לכפתורים */
+}
+
+.currency-icon {
+    display: none;
+}
+
+.radio-container {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* רווח קטן בין כל אפשרות */
+}
+
+    .radio-container label {
+        display: flex;
+        align-items: center;
+        gap: 3px; /* רווח מינימלי בין כפתור לטקסט */
+        cursor: pointer;
+        font-size: 16px; /* גודל טקסט קטן יותר */
+    }
+
+    .radio-container input[type="radio"] {
+        margin: 0; /* מבטל רווחים בין הכפתור לטקסט */
+        width: 12px; /* מקטין את רוחב הכפתור */
+        height: 12px; /* מקטין את גובה הכפתור */
+    }
+
+
+/* עיצוב לשורה עבור יציאה ותאריך */
+.form-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+    /* תיבת הבחירה ותאריך באותו קו */
+    .form-row select {
+        width: 150px; /* תיבת הבחירה של העיר בגודל קטן */
+    }
+
+    .form-row input[type="date"] {
+        width: 130px; /* תיבת תאריך קטנה יותר */
+    }
+
+
+
+
+/* שירותים נוספים */
+.checkbox-container {
+    display: flex;
+    align-items: center;
+    gap: 5px; /* רווח בין שירותים נוספים */
+    flex-wrap: nowrap; /* שומר את הכפתורים בשורה אחת */
+}
+
+    .checkbox-container label {
+        display: flex;
+        align-items: center;
+        gap: 5px; /* רווח קטן בין הכפתור לטקסט */
+        cursor: pointer;
+        font-size: 16px; /* גודל טקסט */
+    }
+
+    .checkbox-container input[type="checkbox"] {
+        margin: 0; /* מבטל רווחים בין הכפתור לטקסט */
+        width: 14px; /* גודל הכפתור */
+        height: 14px;
+    }
+
+.service-icon {
+    opacity: 0.25;
+}
+
+/* עיצוב השורה עם השם והמייל */
+.form-row {
+    display: flex;
+    gap: 20px; /* רווח בין השדות */
+    margin-bottom: 15px; /* רווח תחתון לשורה */
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column; /* מציב את התווית מעל תיבת הטקסט */
+    width: 100%; /* מאפשר התאמה לכל הרוחב */
+}
+
+    .input-group label {
+        font-weight: bold;
+        margin-bottom: 5px; /* רווח קטן בין התווית לתיבת הטקסט */
+    }
+
+    .input-group input {
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+        width: 100%; /* תיבת הטקסט תתפוס את כל הרוחב של כל קבוצה */
+    }
+
+
+/* עיצוב קבוצה שכוללת סוג טיול ומספר משתתפים בשורה אחת */
+.form-group-row {
+    display: flex;
+    justify-content: space-between; /* רווח בין סוג טיול למספר משתתפים */
+    margin-bottom: 20px;
+}
+
+
+/* יישור כפתורי רדיו בשורה */
+.radio-container {
+    display: flex;
+    gap: 15px; /* רווח בין הכפתורים של Private ו-Group */
+}
+
+/* עיצוב למספר משתתפים */
+.participants {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.number-input-inline {
+    display: flex;
+    align-items: center;
+    gap: 2px; /* רווח קטן בין כפתורי הפלוס והמינוס */
+}
+
+    .number-input-inline button {
+        background: none;
+        border: 1px solid #ccc;
+        padding: 5px 10px;
+        cursor: pointer;
+    }
+
+    .number-input-inline input[type="number"] {
+        width: 50px;
+        text-align: center;
+        border: 1px solid  #ccc;
+    }
+
+.booking-form {
+    background-color: #87CEEB; /* צבע רקע של טופס ההזמנה: תכלת */
+    padding: 20px 20px 20px 20px; /* ריווח פנימי של 20 פיקסלים מכל הצדדים (עליון, ימין, תחתון ושמאל) */
+    border-radius: 5px; /* פינות מעוגלות של 5 פיקסלים לטופס */
+    box-shadow: 0 0 0px rgba(0, 0, 0, 0.1); /* מסגרת עדינה לטופס הזנה שעוטפת אותו" */
+    margin-left: 20px;
+    position: sticky;
+    top: 20px; /* The form will stick 20px from the top of the viewport */
+    z-index: 1000; /* Ensures the form appears above other content */
+    flex: 0 1 30%;
+}
+
+
+    .booking-form label, .booking-form input, .booking-form button {
+        display: block;
+        width: 100%;
+        margin-bottom: 0px;
+        padding: 5px 5px 5px 5px;
+    }
+
+        .booking-form button:disabled {
+            opacity: 50%;
+            cursor: not-allowed;
+                
+        }
+
+    .booking-form button {
+        background-color: #363839; /* צבע הרקע של הכפתור: אפור כהה */
+        color: white; /* צבע הטקסט של הכפתור: לבן */
+        border: none; /* מבטל את הגבול של הכפתור */
+        cursor: pointer; /* משנה את סמן העכבר ליד, כדי להראות שהכפתור לחיץ */
+    }
+
+
+    .container_bread {
+        padding: 0 0%; /* Добавляет отступы слева и справа для заголовка и хлебных крошек */
+    }
+    
+    .container_bread h2 {
+        margin-bottom: 10px; /* Отступ снизу, чтобы хлебные крошки были ближе */
+    }
+    
+    .breadcrumb {
+        font-family: 'Roboto Flex', sans-serif;
+        font-size: 14px;
+        color: #555;
+        margin-bottom: 20px;
+    }
+    
+    .breadcrumb ul {
+        list-style: none; /* Убирает точки у списка */
+        display: flex; /* Делаем элементы списка горизонтальными */
+        align-items: center;
+        padding: 0;
+        margin: 0;
+    }
+    
+    .breadcrumb li {
+        margin-right: 5px; /* Добавляем отступ между элементами */
+    }
+    
+    .breadcrumb li:last-child {
+        margin-right: 0; /* Убираем отступ у последнего элемента */
+    }
+    
+    .breadcrumb a {
+        color: #87CEEB;
+        text-decoration: none;
+    }
+    
+    .breadcrumb a:hover {
+        text-decoration: underline;
+    }
+    
+    .breadcrumb li span {
+        color: #999;
+    }
+
+

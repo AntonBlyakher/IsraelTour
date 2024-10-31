@@ -1,0 +1,162 @@
+/* טיפוגרפיה לכותרות */
+h2 {
+	font-family: 'Bebas Neue', sans-serif; /* גופן לכותרת */
+	font-size: 70px; /* גודל טקסט */
+	color: var(--dark-gray); /* צבע הטקסט */
+	margin-bottom: 20px; /* מרווח תחתון לכותרת */
+	line-height: 1.2; /* נוסף ליישור עם הטקסט */
+}
+
+p, .text {
+	font-family: 'Roboto Flex', sans-serif; /* גופן לטקסט */
+	font-size: 17px; /* גודל טקסט */
+	margin: 0; /* ללא מרווחים חיצוניים */
+	padding-bottom: 10px; /* מרווח תחתון לטקסט */
+	line-height: 26px; /* מרווח בין שורות */
+}
+
+/* עיצוב כללי לסקשן section5 */
+.section5 {
+	padding: 50px 5%; /* ריווח מסביב לסקשן */
+	margin-bottom: 50px; /* מרווח תחתון לסקשן */
+	box-sizing: border-box; /* התייחסות לריווח ולגבולות */
+	width: 100%; /* רוחב מלא לסקשן */
+	height: auto; /* גובה אוטומטי */
+}
+
+/* רשת לסקשן */
+.section5__grid-container {
+	display: grid; /* שימוש ברשת */
+	grid-template-columns: 2fr 3fr 250px; /* העמודה השלישית ברוחב קבוע של 250px */
+	gap: 20px; /* מרווח בין עמודות לשיפור חזותי */
+	align-items: center; /* יישור אנכי של האלמנטים */
+}
+
+/* עמודה ראשונה */
+.section5__first-column {
+	display: grid; /* הפעלת רשת עבור תת-רשת */
+	grid-template-columns: 1fr 1fr; /* תת-רשת עם שתי עמודות */
+	gap: 5px; /* מרווח בין אלמנטים בתת-רשת */
+}
+
+/* החלק השמאלי של תת-רשת */
+.section5__left-grid {
+	display: flex; /* הפעלת flexbox */
+	align-items: center; /* יישור אנכי */
+	justify-content: center; /* יישור אופקי */
+}
+
+.section5__image-left {
+	width: 250px; /* רוחב התמונה */
+	height: 240px; /* גובה התמונה */
+	object-fit: cover; /* שמירה על הפרופורציות של התמונה */
+}
+
+/* החלק הימני של תת-רשת */
+.section5__right-grid {
+	display: flex; /* הפעלת flexbox */
+	flex-direction: column; /* פורמט עמודות */
+	gap: 10px; /* מרווח בין אלמנטים */
+	align-items: center; /* יישור אופקי */
+	justify-content: center; /* יישור אנכי */
+}
+
+.section5__image-right-top,
+.section5__image-right-bottom {
+	width: 100%; /* רוחב 100% בתת-רשת */
+	height: 100%; /* גובה 100% בתת-רשת */
+	object-fit: cover; /* שמירה על הפרופורציות של התמונה */
+}
+
+/* עמודה מרכזית */
+.section5__second-column {
+	display: flex; /* הפעלת flexbox */
+	flex-direction: column; /* פורמט עמודות */
+	justify-content: center; /* יישור אנכי */
+	align-items: center; /* יישור אופקי */
+	gap: 20px; /* מרווח בין האלמנטים בתוך העמודה */
+	text-align: left; /* יישור טקסט לשמאל */
+	padding: 0 20px; /* ריווח אופקי */
+	width: 100%; /* רוחב מלא של העמודה */
+}
+
+.section5__second-column > * {
+	text-align: left; /* יישור טקסט לשמאל */
+	width: 65%; /* הגבלת רוחב בתוך העמודה */
+}
+
+.section5__heading {
+	font-family: 'Bebas Neue', sans-serif; /* גופן לכותרת */
+	color: var(--dark-gray); /* צבע הכותרת */
+	margin-bottom: 20px; /* מרווח תחתון לכותרת */
+	justify-content: center; /* יישור מרכזי לכותרת */
+	align-items: center; /* יישור מרכזי לכותרת */
+}
+
+.section5__highlight {
+	color: var(--sky-blue); /* צבע הדגשה לטקסט */
+}
+
+.section5__text {
+	font-family: 'Roboto Flex', sans-serif; /* גופן לטקסט */
+	font-size: 17px; /* גודל טקסט */
+	line-height: 26px; /* מרווח בין שורות */
+	margin-bottom: 20px; /* מרווח תחתון לטקסט */
+	justify-content: center; /* יישור מרכזי לטקסט */
+	align-items: center; /* יישור מרכזי לטקסט */
+}
+
+/* עיצוב לכפתור בסקשן "section5" */
+.section5 .cta-outline {
+	position: relative; /* מיקום יחסי */
+	display: inline-block; /* שורת-בלוק עבור כפתור */
+	padding: 12px 36px; /* ריווח פנימי */
+	font-family: "Bebas Neue", sans-serif; /* גופן לכפתור */
+	font-size: 22px; /* גודל טקסט לכפתור */
+	text-transform: uppercase; /* שינוי טקסט לאותיות גדולות */
+	text-align: center; /* יישור טקסט במרכז */
+	cursor: pointer; /* מצביע בצורת חץ */
+	text-decoration: none; /* הסרת קו תחתון */
+	transition: all 0.3s ease; /* מעברים בעת ריחוף */
+	border: 2px solid #87CEEB; /* גבול כחול */
+	color: #fff; /* צבע טקסט */
+	background-color: transparent; /* רקע שקוף */
+}
+
+.section5 .cta-outline:hover {
+	background-color: #87CEEB; /* רקע כחול בריחוף */
+	color: white; /* טקסט לבן בריחוף */
+	text-decoration: none; /* הסרת קו תחתון בריחוף */
+}
+
+.section5 .cta-outline::before {
+	content: ""; /* תוכן ריק לפסבדו-אלמנט */
+	position: absolute; /* מיקום אבסולוטי */
+	top: -5px; /* מרווח למעלה */
+	left: -5px; /* מרווח משמאל */
+	right: -5px; /* מרווח מימין */
+	bottom: -5px; /* מרווח למטה */
+	border: 2px solid transparent; /* גבול שקוף */
+	transition: all 0.3s ease; /* מעבר חלק */
+}
+
+.section5 .cta-outline:hover::before {
+	top: -10px; /* מרווח עליון בריחוף */
+	left: -10px; /* מרווח שמאלי בריחוף */
+	right: -10px; /* מרווח ימני בריחוף */
+	bottom: -10px; /* מרווח תחתון בריחוף */
+	border-color: #87CEEB; /* צבע הגבול בריחוף */
+}
+
+/* עמודה שלישית */
+.section5__third-column {
+	display: flex; /* הפעלת flexbox */
+	align-items: center; /* יישור אנכי */
+	justify-content: center; /* יישור אופקי */
+}
+
+.section5__image-right {
+	width: 250px; /* רוחב התמונה */
+	height: 240px; /* גובה התמונה */
+	object-fit: cover; /* שמירה על הפרופורציות של התמונה */
+}

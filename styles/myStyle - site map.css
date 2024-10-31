@@ -1,0 +1,30 @@
+﻿/* עיצוב כללי לדף */
+body {
+    font-family: 'Roboto Flex', sans-serif; /* גופן כללי של הדף */
+    padding: 5px; /* רווח פנימי של 5 פיקסלים בתוך התוכן */
+    display: flex; /* הופך את מבנה הדף למבוסס Flexbox כדי לסדר את שני הצדדים */
+    background-color: #F0F0F0; /* צבע רקע לבן מלוכלך */
+    margin: 0 auto;
+                   
+
+    /* עיצוב הכותרת הראשית */
+    .sitemap-section h1 {
+        font-family: 'Bebas Neue', sans-serif;
+        font-size: 36px;
+        color: #363839;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    /* עיצוב כותרות משנה */
+    .sitemap-section h3 {
+        font-family: 'Bebas Neue', sans-serif;
+        font-size: 20px;
+        color: #363839;
+        margin-top: 15px;
+        margin-bottom: 5px;
+    }
+
+
+ 
+

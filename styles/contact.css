@@ -1,0 +1,715 @@
+﻿* {
+    box-sizing: border-box; /* קביעת מודל התיבה כך שהרוחב כולל את הגבולות והפנימיות */
+    margin: 0; /* איפוס מרווח ברירת מחדל */
+    padding: 0; /* איפוס רווח ברירת מחדל */
+}
+
+/* צבעים */
+:root {
+    --sky-blue: #87CEEB; /* צבע כחול שמיים */
+    --dark-gray: #363839; /* צבע אפור כהה */
+    --light-gray: #F0F0F0; /* צבע אפור בהיר */
+    --golden-brown: #B19F70; /* צבע חום זהוב */
+}
+
+/* טיפוגרפיה */
+h2 {
+    font-family: 'Bebas Neue', sans-serif; /* גופן עבור כותרות */
+    font-size: 70px; /* גודל הגופן לכותרות */
+    color: var(--dark-gray); /* צבע הכותרות אפור כהה */
+    margin-bottom: 20px; /* מרווח תחתון לכותרת */
+}
+
+p, .text {
+    font-family: 'Roboto Flex', sans-serif; /* גופן עבור טקסטים */
+    font-size: 17px; /* גודל הגופן לטקסטים */
+    margin: 0; /* איפוס המרווח החיצוני */
+    padding-bottom: 10px; /* מרווח תחתון לטקסט */
+}
+
+.header__container {
+    display: flex; /* יישום תצוגת Flex למיכל */
+    justify-content: space-between; /* חלוקה שווה בין פריטי המיכל */
+    align-items: center; /* יישור אנכי מרכזי לפריטים */
+    padding: 20px 5%; /* ריווח פנימי סביב המיכל */
+    background: rgba(255, 255, 255, 0.174); /* רקע לבן שקוף */
+    backdrop-filter: blur(100px); /* פילטר טשטוש לרקע */
+    color: white; /* צבע הטקסט לבן */
+    position: relative; /* קביעת מיקום יחסי */
+}
+
+.header__menu-container {
+    display: flex; /* תצוגת Flex לתפריט */
+    justify-content: space-between; /* חלוקה שווה בין הפריטים */
+    align-items: center; /* יישור אנכי מרכזי לפריטים */
+}
+
+.header__background {
+    background-color: #99a4ab; /* הגדרת צבע רקע */
+    background-size: cover; /* התאמת תמונת הרקע לגודל המיכל */
+    background-repeat: no-repeat; /* אי חזרה על התמונה */
+    width: 100%; /* רוחב מלא למיכל */
+    height: 100px; /* גובה המיכל */
+    position: absolute; /* מיקום אבסולוטי */
+}
+
+
+.header__logo img {
+    height: 90px; /* גובה הלוגו */
+    margin-right: auto; /* יישור לימין */
+}
+
+.header__nav-links {
+    list-style: none; /* הסרת סגנון הרשימה */
+    display: flex; /* תצוגת Flex לפריטים ברשימה */
+}
+
+.header__nav-link,
+.header__cta,
+.hero-content__cta-outline {
+    font-family: "Bebas Neue", sans-serif; /* גופן לכפתורים וקישורים */
+    font-size: 22px; /* גודל גופן לקישורים */
+    color: #edf0f1; /* צבע טקסט לבן-אפור */
+    text-decoration: none; /* הסרת קו תחתון */
+    margin: 0 20px; /* ריווח אופקי בין פריטים */
+}
+
+.header__nav-item {
+    padding: 0px 20px; /* ריווח פנימי לפריט בתפריט */
+}
+
+.header__nav-link:hover {
+    color: #87CEEB; /* שינוי צבע בקישורים בעת ריחוף */
+}
+
+.overlay {
+    height: 100%; /* גובה מלא */
+    width: 0; /* קביעת רוחב התחלתי של 0 */
+    position: fixed; /* מיקום קבוע למסך */
+    z-index: 1; /* קביעת שכבה קדמית */
+    left: 0; /* מיקום בצד שמאל */
+    top: 0; /* מיקום למעלה */
+    background-color: #24252a; /* צבע רקע כהה */
+    overflow-x: hidden; /* הסתרת גלילה אופקית */
+    transition: all 0.5s ease; /* מעבר חלקי */
+}
+
+.overlay--active {
+    width: 100%; /* פתיחת הרוחב למצב פעיל */
+}
+
+.overlay__content {
+    display: flex; /* תצוגת Flex */
+    height: 100%; /* גובה מלא */
+    flex-direction: column; /* תצוגה טורית */
+    align-items: center; /* יישור למרכז */
+    justify-content: center; /* יישור אנכי מרכזי */
+}
+
+.overlay a {
+    padding: 15px; /* ריווח פנימי לקישורים */
+    font-size: 36px; /* גודל גופן לקישורים */
+    display: block; /* תצוגה כבלוק */
+    transition: all 0.3s ease; /* מעבר חלקי */
+}
+
+    .overlay a:hover,
+    .overlay a:focus {
+        color: #87CEEB; /* שינוי צבע בקישורים בעת ריחוף ומיקוד */
+    }
+
+.overlay__close {
+    position: absolute; /* מיקום אבסולוטי */
+    top: 20px; /* מיקום למעלה */
+    right: 45px; /* מיקום מימין */
+    font-size: 60px; /* גודל גופן */
+    color: #edf0f1; /* צבע לבן */
+    cursor: pointer; /* סמן מצביע */
+}
+
+/* סגנון מותאם למסכים נמוכים */
+@media screen and (max-height: 450px) {
+    .overlay a {
+        font-size: 20px; /* גודל גופן קטן יותר */
+    }
+
+    .overlay__close {
+        font-size: 40px; /* גודל גופן קטן יותר */
+        top: 15px; /* מיקום מחדש של הכפתור */
+        right: 35px; /* מיקום מחדש של הכפתור */
+    }
+}
+
+/* סגנון מותאם למסכים קטנים */
+@media only screen and (max-width: 800px) {
+    .header__nav-links,
+    .header__cta {
+        display: none; /* הסתרת תפריט וכפתור בקריאה לפעולה */
+    }
+}
+
+/* סגנונות כלליים לכפתורים */
+.header__cta,
+.hero-content__cta-outline {
+    position: relative; /* מיקום יחסי */
+    display: inline-block; /* תצוגה כבלוק פנימי */
+    padding: 12px 36px; /* ריווח פנימי */
+    font-family: "Bebas Neue", sans-serif; /* גופן כפתור */
+    font-size: 22px; /* גודל גופן כפתור */
+    text-transform: uppercase; /* אותיות גדולות */
+    text-align: center; /* יישור מרכזי */
+    cursor: pointer; /* סמן מצביע */
+    text-decoration: none; /* הסרת קו תחתון */
+    transition: all 0.3s ease; /* מעבר חלקי */
+}
+
+/* סגנון כפתור מלא (GET IN TOUCH) */
+.header__cta {
+    color: white; /* צבע טקסט לבן */
+    background-color: transparent; /* רקע שקוף */
+    border: 2px solid white; /* מסגרת לבנה */
+    position: relative; /* מיקום יחסי */
+    transition: all 0.3s ease; /* מעבר חלקי */
+}
+
+    .header__cta::before {
+        content: ""; /* הוספת מסגרת חיצונית */
+        position: absolute; /* מיקום אבסולוטי */
+        top: -5px; /* מיקום מעל הכפתור */
+        left: -5px; /* מיקום משמאל לכפתור */
+        right: -5px; /* מיקום מימין לכפתור */
+        bottom: -5px; /* מיקום מתחת לכפתור */
+        border: 2px solid white; /* מסגרת לבנה */
+        transition: all 0.3s ease; /* מעבר חלקי */
+    }
+
+    .header__cta:hover::before {
+        top: -10px; /* שינוי מיקום המסגרת בריחוף */
+        left: -10px;
+        right: -10px;
+        bottom: -10px;
+    }
+
+    .header__cta:hover {
+        background-color: #87CEEB; /* שינוי צבע רקע בריחוף */
+        color: white; /* שינוי צבע טקסט בלבן */
+    }
+
+/* סגנון כפתור גבול בלבד (Contact Us) */
+.hero-content__cta-outline {
+    border: 2px solid #87CEEB; /* מסגרת כחול שמיים */
+    color: #fff; /* צבע טקסט לבן */
+    text-transform: uppercase; /* אותיות גדולות */
+    background-color: transparent; /* רקע שקוף */
+    right: 20px;
+}
+
+    .hero-content__cta-outline:hover {
+        background-color: #87CEEB; /* שינוי רקע בריחוף */
+        color: white; /* שינוי צבע טקסט */
+        text-decoration: none; /* הסרת קו תחתון */
+    }
+
+    .hero-content__cta-outline::before {
+        content: ""; /* הוספת מסגרת חיצונית */
+        position: absolute; /* מיקום אבסולוטי */
+        top: -5px; /* מיקום מעל הכפתור */
+        left: -5px; /* מיקום משמאל */
+        right: -5px; /* מיקום מימין */
+        bottom: -5px; /* מיקום מתחת */
+        border: 2px solid transparent; /* מסגרת שקופה */
+        transition: all 0.3s ease; /* מעבר חלקי */
+    }
+
+    .hero-content__cta-outline:hover::before {
+        top: -10px; /* שינוי מיקום המסגרת בריחוף */
+        left: -10px;
+        right: -10px;
+        bottom: -10px;
+        border-color: #87CEEB; /* צבע מסגרת כחול שמיים */
+    }
+
+/* תכנים בעמודה השמאלית */
+.hero-content {
+    position: relative; /* מיקום יחסי */
+    z-index: 2; /* שכבת קדמה */
+    display: grid; /* תצוגת רשת */
+    grid-template-columns: 1fr 1fr; /* שתי עמודות */
+    gap: 100px; /* מרווח בין עמודות */
+    max-width: 2000px; /* רוחב מרבי */
+    width: 100%; /* רוחב מלא */
+    height: auto; /* גובה אוטומטי */
+    margin: 0 auto; /* מרכז */
+    padding-top: 0vh; /* מרווח עליון */
+    justify-content: center; /* מרכזת */
+    align-items: center; /* יישור מרכזי */
+    margin-bottom: 0; /* אין רווח תחתון */
+}
+
+/* תכנים פנימיים */
+.hero-content__text,
+.hero-content__map {
+    display: flex; /* תצוגת Flex */
+    flex-direction: column; /* כיוון אנכי */
+    justify-content: center; /* יישור למרכז */
+    padding: 20px; /* ריווח פנימי */
+    position: relative; /* מיקום יחסי */
+}
+
+/* מרכז טקסט אנכי */
+.hero-content__text {
+    text-align: left; /* יישור טקסט לשמאל */
+    max-width: 600px; /* רוחב מרבי */
+    justify-self: center; /* יישור עצמי */
+}
+
+.hero-content__subtitle h4 {
+    font-family: "Bebas Neue", sans-serif; /* גופן לכותרת משנה */
+    font-size: 24px; /* גודל גופן */
+    color: #fff; /* צבע טקסט לבן */
+}
+
+.hero-content__highlight {
+    color: #87CEEB; /* צבע טקסט כחול שמיים */
+}
+
+.hero-content__title h1 {
+    font-family: "Bebas Neue", sans-serif; /* גופן כותרת */
+    font-size: 72px; /* גודל גופן */
+    font-weight: regular; /* משקל גופן */
+    line-height: 1.1; /* גובה שורה */
+    margin-bottom: 20px; /* מרווח תחתון */
+    color: #fff; /* צבע טקסט לבן */
+}
+
+.hero-content__highlight-large {
+    color: #87CEEB; /* צבע כחול שמיים */
+}
+
+.hero-content__content {
+    font-family: "Roboto Flex", sans-serif; /* גופן לפסקה */
+    font-size: 18px; /* גודל גופן */
+    color: #fff; /* צבע טקסט */
+    max-width: 500px; /* רוחב מרבי */
+    line-height: 1.6; /* גובה שורה */
+    margin-bottom: 30px; /* מרווח תחתון */
+}
+
+.hero-content__button .hero-content__cta-outline {
+    font-family: "Bebas Neue", sans-serif; /* גופן כפתור */
+    font-size: 22px; /* גודל גופן */
+    padding: 10px 30px; /* ריווח פנימי */
+    color: #fff; /* צבע טקסט */
+    border: 2px solid #87CEEB; /* מסגרת כחול שמיים */
+    text-transform: uppercase; /* אותיות גדולות */
+    text-decoration: none; /* הסרת קו תחתון */
+    font-weight: bold; /* משקל מודגש */
+    display: inline-block; /* בלוק פנימי */
+}
+
+    .hero-content__button .hero-content__cta-outline:hover {
+        background-color: #87CEEB; /* שינוי רקע בריחוף */
+        color: white; /* שינוי צבע טקסט */
+    }
+
+/* עמודה ימנית: מפה */
+.hero-content__map {
+    display: flex; /* תצוגת Flex */
+    justify-content: center; /* מרכז */
+    align-items: center; /* יישור מרכזי */
+    position: relative; /* מיקום יחסי */
+    height: 100%; /* גובה מלא */
+}
+
+/* תמונת המפה */
+.hero-content__hero-map .hero-content__map-img {
+    max-width: 100%; /* רוחב מלא */
+    height: auto; /* גובה אוטומטי */
+    opacity: 0.7; /* שקיפות לתמונה */
+    z-index: 1; /* שכבת קדמה */
+    justify-self: center; /* יישור מרכזי */
+}
+
+/* סגנונות לנקודות על המפה */
+.hero-content__pins {
+    position: absolute; /* מיקום אבסולוטי */
+    top: 0; /* מיקום עליון */
+    left: 0; /* מיקום שמאל */
+    width: 100%; /* רוחב מלא */
+    height: 100%; /* גובה מלא */
+    z-index: 2; /* שכבת קדמה */
+}
+
+/* סגנון נקודת מפה */
+.hero-content__pin {
+    width: 30px; /* רוחב נקודה */
+    height: 30px; /* גובה נקודה */
+    border: 2px solid white; /* מסגרת לבנה */
+    border-radius: 50%; /* פינות עגולות */
+    background-color: transparent; /* רקע שקוף */
+    position: absolute; /* מיקום אבסולוטי */
+    cursor: pointer; /* סמן מצביע */
+    transition: background-color 0.3s ease, transform 0.3s ease; /* מעבר צבע ותזוזה */
+}
+
+    .hero-content__pin::before {
+        content: ''; /* יצירת עיגול פנימי */
+        display: block; /* הצגת הבלוק */
+        width: 10px; /* רוחב עיגול פנימי */
+        height: 10px; /* גובה עיגול פנימי */
+        background-color: white; /* צבע לבן */
+        border-radius: 50%; /* עיגול */
+        margin: 8px auto; /* מיקום עיגול פנימי */
+    }
+
+    .hero-content__pin:hover {
+        background-color: white; /* שינוי צבע רקע בריחוף */
+    }
+
+        .hero-content__pin:hover::before {
+            background-color: #87CEEB; /* שינוי צבע לעיגול פנימי בריחוף */
+        }
+
+/* סגנון נקודה פעילה במפה */
+.hero-content__pin--active {
+    background-color: white; /* רקע לבן לנקודה פעילה */
+    size: 24px;
+}
+
+    .hero-content__pin--active::before {
+        background-color: #87CEEB; /* צבע פנימי כחול לנקודה פעילה */
+    }
+
+    /* הצגת שם העיר בעת לחיצה על נקודה פעילה */
+    .hero-content__pin--active::after {
+        content: attr(data-city); /* הצגת שם העיר מתוך התכונה */
+        position: absolute; /* מיקום אבסולוטי */
+        top: 40px; /* מיקום מעל הנקודה */
+        left: -10px; /* מיקום אופקי */
+        font-size: 12px; /* גודל גופן */
+        color: white; /* צבע טקסט לבן */
+        white-space: nowrap; /* מניעת שבירת שורה */
+    }
+
+/* מיקום הנקודות על המפה */
+.hero-content__pin--1 {
+    top: 15%; /* מיקום אנכי */
+    left: 45%; /* מיקום אופקי */
+}
+
+.hero-content__pin--2 {
+    top: 50%;
+    left: 47%;
+}
+
+.hero-content__pin--3 {
+    top: 94%;
+    left: 50.9%;
+}
+
+.hero-content__pin--4 {
+    top: 58%;
+    left: 46%;
+}
+
+.hero-content__pin--tel-aviv {
+    top: 42%;
+    left: 40%;
+}
+
+    /* סגנון לנקודת תל-אביב כאשר היא פעילה */
+    .hero-content__pin--tel-aviv.hero-content__pin--active {
+        background-color: white; /* רקע לבן */
+    }
+
+        .hero-content__pin--tel-aviv.hero-content__pin--active::before {
+            background-color: #87CEEB; /* צבע כחול לעיגול הפנימי */
+        }
+
+        .hero-content__pin--tel-aviv.hero-content__pin--active::after {
+            content: "Tel-Aviv"; /* שם העיר תל-אביב */
+            position: absolute; /* מיקום אבסולוטי */
+            top: 40px; /* מיקום מעל הנקודה */
+            left: -20px; /* מיקום אופקי */
+            font-size: 18px; /* גודל גופן */
+            color: white; /* צבע טקסט לבן */
+            white-space: nowrap; /* מניעת שבירת שורה */
+        }
+
+/* מיכל לכפתור גלילה */
+.hero-content__scroll-btn-container {
+    position: absolute; /* מיקום אבסולוטי */
+    bottom: 10vh; /* מיקום מלמטה */
+    left: 50%; /* מיקום באמצע */
+    transform: translateX(-50%); /* הזזת המיקום שמאלה */
+    display: flex; /* תצוגת Flex */
+    justify-content: center; /* יישור למרכז */
+    align-items: center; /* יישור אנכי מרכזי */
+    width: 180px; /* רוחב מיכל */
+    height: 180px; /* גובה מיכל */
+    cursor: pointer; /* סמן מצביע */
+}
+
+.hero-content__scroll-btn {
+    position: relative; /* מיקום יחסי */
+    width: 120px; /* רוחב כפתור */
+    height: 120px; /* גובה כפתור */
+    margin-top: 150px; /* מרווח עליון */
+}
+
+.hero-content__scroll-btn-border {
+    position: absolute; /* מיקום אבסולוטי */
+    width: 100%; /* רוחב מלא */
+    height: 100%; /* גובה מלא */
+    animation: rotateBorder 10s linear infinite; /* אנימציה לסיבוב הכפתור */
+}
+
+.hero-content__scroll-btn-text {
+    position: absolute; /* מיקום אבסולוטי */
+    top: 50%; /* מיקום במרכז אנכי */
+    left: 50%; /* מיקום במרכז אופקי */
+    transform: translate(-50%, -50%); /* הזזה למרכז מוחלט */
+    width: 95px; /* רוחב טקסט הכפתור */
+    height: auto; /* גובה אוטומטי */
+    text-align: center; /* יישור טקסט למרכז */
+}
+
+.hero-content__scroll-btn-icon {
+    position: absolute; /* מיקום אבסולוטי */
+    top: 50%; /* מיקום במרכז אנכי */
+    left: 50%; /* מיקום במרכז אופקי */
+    transform: translate(-50%, -50%); /* הזזה למרכז מוחלט */
+    width: 40px; /* רוחב אייקון */
+    height: auto; /* גובה אוטומטי */
+}
+
+/* אנימציית סיבוב למסגרת הכפתור */
+@keyframes rotateBorder {
+    from {
+        transform: rotate(0deg); /* התחלה מ-0 מעלות */
+    }
+
+    to {
+        transform: rotate(300deg); /* סיבוב מלא של 300 מעלות */
+    }
+}
+
+/* מיכל קרדיטים */
+.credit-container {
+    color: #fff; /* צבע טקסט לבן */
+    width: 100%; /* רוחב מלא */
+    height: 100%; /* גובה מלא */
+    z-index: 3; /* שכבת קדמה */
+    position: absolute; /* מיקום אבסולוטי */
+}
+
+.main-section .main-text {
+    color: var(--text-white); /* צבע טקסט לבן */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+body {
+    font-family: 'Roboto Flex', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: white;
+}
+
+
+.container {
+    position: relative;
+    width: 92%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+h1 {
+    font-size: 40px;
+    text-align: left;
+    margin: 20px;
+    padding-left: 40px;
+    color: #363839;
+}
+
+    h1 span {
+        color: #87CEEB;
+    }
+
+    .container {
+        position: relative;
+        width: 92%;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+    
+    h2 {
+        font-size: 70px;
+        text-align: left;
+        margin: 20px;
+        padding-left: 40px;
+        color: #363839;
+    }
+    
+    h2 span {
+        color: #87CEEB;
+    }
+    
+    .contact-form {
+        width: 90%;
+        max-width: 1200px;
+        margin: 20px auto;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        background-color: #f9f9f9;
+    }
+    
+    .contact-form h2 {
+        text-align: center;
+        color: #363839;
+    }
+    
+    .contact-form label {
+        display: block;
+        margin-top: 15px;
+        color: #363839;
+    }
+    
+    .contact-form input[type="text"],
+    .contact-form input[type="email"],
+    .contact-form input[type="tel"],
+    .contact-form select,
+    .contact-form textarea {
+        width: 100%;
+        padding: 10px;
+        margin-top: 5px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-sizing: border-box;
+    }
+    
+    .contact-form button {
+        display: block;
+        width: 100%;
+        padding: 15px;
+        background-color: #87CEEB;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        font-size: 16px;
+        cursor: pointer;
+        margin-top: 20px;
+    }
+    
+    .contact-form button:hover {
+        background-color: #1E90FF;
+    }
+    
+    /* Styles for overlay and success message box */
+    .overlay {
+        display: none; /* Hidden by default */
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.8); /* Dark background with opacity */
+        justify-content: center;
+        align-items: center;
+        z-index: 999;
+    }
+    
+    .success-box {
+        background-color: white;
+        padding: 20px;
+        border: 3px solid #87CEEB;
+        border-radius: 10px;
+        text-align: center;
+        color: black;
+        width: 90%;
+        max-width: 500px;
+    }
+    
+    .success-box p {
+        margin: 0;
+        font-size: 18px;
+    }
+    
+    .success-box button {
+        margin-top: 20px;
+        padding: 10px 20px;
+        background-color: #87CEEB;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        font-size: 16px;
+        cursor: pointer;
+    }
+    
+    .success-box button:hover {
+        background-color: #1E90FF;
+    }
+
+
+    .container_bread {
+        padding: 0 5%; /* Добавляет отступы слева и справа для заголовка и хлебных крошек */
+    }
+    
+    .container_bread h2 {
+        margin-bottom: 10px; /* Отступ снизу, чтобы хлебные крошки были ближе */
+    }
+    
+    .breadcrumb {
+        font-family: 'Roboto Flex', sans-serif;
+        font-size: 14px;
+        color: #555;
+        margin-bottom: 20px;
+    }
+    
+    .breadcrumb ul {
+        list-style: none; /* Убирает точки у списка */
+        display: flex; /* Делаем элементы списка горизонтальными */
+        align-items: center;
+        padding: 0;
+        margin: 0;
+    }
+    
+    .breadcrumb li {
+        margin-right: 5px; /* Добавляем отступ между элементами */
+    }
+    
+    .breadcrumb li:last-child {
+        margin-right: 0; /* Убираем отступ у последнего элемента */
+    }
+    
+    .breadcrumb a {
+        color: #87CEEB;
+        text-decoration: none;
+    }
+    
+    .breadcrumb a:hover {
+        text-decoration: underline;
+    }
+    
+    .breadcrumb li span {
+        color: #999;
+    }
+    

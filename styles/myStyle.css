@@ -1,0 +1,1389 @@
+﻿* {
+    box-sizing: border-box; /* קביעת מודל התיבה כך שהרוחב כולל את הגבולות והפנימיות */
+    margin: 0; /* איפוס מרווח ברירת מחדל */
+    padding: 0; /* איפוס רווח ברירת מחדל */
+}
+
+/* צבעים */
+:root {
+    --sky-blue: #87CEEB; /* צבע כחול שמיים */
+    --dark-gray: #363839; /* צבע אפור כהה */
+    --light-gray: #F0F0F0; /* צבע אפור בהיר */
+    --golden-brown: #B19F70; /* צבע חום זהוב */
+}
+
+/* טיפוגרפיה */
+h2 {
+    font-family: 'Bebas Neue', sans-serif; /* גופן עבור כותרות */
+    font-size: 70px; /* גודל הגופן לכותרות */
+    color: var(--dark-gray); /* צבע הכותרות אפור כהה */
+    margin-bottom: 20px; /* מרווח תחתון לכותרת */
+}
+
+p, .text {
+    font-family: 'Roboto Flex', sans-serif; /* גופן עבור טקסטים */
+    font-size: 17px; /* גודל הגופן לטקסטים */
+    margin: 0; /* איפוס המרווח החיצוני */
+    padding-bottom: 10px; /* מרווח תחתון לטקסט */
+}
+
+.header__container {
+    display: flex; /* יישום תצוגת Flex למיכל */
+    justify-content: space-between; /* חלוקה שווה בין פריטי המיכל */
+    align-items: center; /* יישור אנכי מרכזי לפריטים */
+    padding: 20px 5%; /* ריווח פנימי סביב המיכל */
+    background: rgba(255, 255, 255, 0.174); /* רקע לבן שקוף */
+    backdrop-filter: blur(100px); /* פילטר טשטוש לרקע */
+    color: white; /* צבע הטקסט לבן */
+    position: relative; /* קביעת מיקום יחסי */
+}
+
+.header__menu-container {
+    display: flex; /* תצוגת Flex לתפריט */
+    justify-content: space-between; /* חלוקה שווה בין הפריטים */
+    align-items: center; /* יישור אנכי מרכזי לפריטים */
+}
+
+.header__background {
+    background-image: url('../image/bgImage.jpg'); /* קביעת תמונת רקע */
+    background-size: cover; /* התאמת תמונת הרקע לגודל המיכל */
+    background-repeat: no-repeat; /* אי חזרה על התמונה */
+    width: 100%; /* רוחב מלא למיכל */
+    height: 1000px; /* גובה המיכל */
+    position: absolute; /* מיקום אבסולוטי */
+}
+
+.header__logo img {
+    height: 90px; /* גובה הלוגו */
+    margin-right: auto; /* יישור לימין */
+}
+
+.header__nav-links {
+    list-style: none; /* הסרת סגנון הרשימה */
+    display: flex; /* תצוגת Flex לפריטים ברשימה */
+}
+
+.header__nav-link,
+.header__cta,
+.hero-content__cta-outline {
+    font-family: "Bebas Neue", sans-serif; /* גופן לכפתורים וקישורים */
+    font-size: 22px; /* גודל גופן לקישורים */
+    color: #edf0f1; /* צבע טקסט לבן-אפור */
+    text-decoration: none; /* הסרת קו תחתון */
+    margin: 0 20px; /* ריווח אופקי בין פריטים */
+}
+
+.header__nav-item {
+    padding: 0px 20px; /* ריווח פנימי לפריט בתפריט */
+}
+
+.header__nav-link:hover {
+    color: #87CEEB; /* שינוי צבע בקישורים בעת ריחוף */
+}
+
+.overlay {
+    height: 100%; /* גובה מלא */
+    width: 0; /* קביעת רוחב התחלתי של 0 */
+    position: fixed; /* מיקום קבוע למסך */
+    z-index: 1; /* קביעת שכבה קדמית */
+    left: 0; /* מיקום בצד שמאל */
+    top: 0; /* מיקום למעלה */
+    background-color: #24252a; /* צבע רקע כהה */
+    overflow-x: hidden; /* הסתרת גלילה אופקית */
+    transition: all 0.5s ease; /* מעבר חלקי */
+}
+
+.overlay--active {
+    width: 100%; /* פתיחת הרוחב למצב פעיל */
+}
+
+.overlay__content {
+    display: flex; /* תצוגת Flex */
+    height: 100%; /* גובה מלא */
+    flex-direction: column; /* תצוגה טורית */
+    align-items: center; /* יישור למרכז */
+    justify-content: center; /* יישור אנכי מרכזי */
+}
+
+.overlay a {
+    padding: 15px; /* ריווח פנימי לקישורים */
+    font-size: 36px; /* גודל גופן לקישורים */
+    display: block; /* תצוגה כבלוק */
+    transition: all 0.3s ease; /* מעבר חלקי */
+}
+
+    .overlay a:hover,
+    .overlay a:focus {
+        color: #87CEEB; /* שינוי צבע בקישורים בעת ריחוף ומיקוד */
+    }
+
+.overlay__close {
+    position: absolute; /* מיקום אבסולוטי */
+    top: 20px; /* מיקום למעלה */
+    right: 45px; /* מיקום מימין */
+    font-size: 60px; /* גודל גופן */
+    color: #edf0f1; /* צבע לבן */
+    cursor: pointer; /* סמן מצביע */
+}
+
+/* סגנון מותאם למסכים נמוכים */
+@media screen and (max-height: 450px) {
+    .overlay a {
+        font-size: 20px; /* גודל גופן קטן יותר */
+    }
+
+    .overlay__close {
+        font-size: 40px; /* גודל גופן קטן יותר */
+        top: 15px; /* מיקום מחדש של הכפתור */
+        right: 35px; /* מיקום מחדש של הכפתור */
+    }
+}
+
+/* סגנון מותאם למסכים קטנים */
+@media only screen and (max-width: 800px) {
+    .header__nav-links,
+    .header__cta {
+        display: none; /* הסתרת תפריט וכפתור בקריאה לפעולה */
+    }
+}
+
+/* סגנונות כלליים לכפתורים */
+.header__cta,
+.hero-content__cta-outline {
+    position: relative; /* מיקום יחסי */
+    display: inline-block; /* תצוגה כבלוק פנימי */
+    padding: 12px 36px; /* ריווח פנימי */
+    font-family: "Bebas Neue", sans-serif; /* גופן כפתור */
+    font-size: 22px; /* גודל גופן כפתור */
+    text-transform: uppercase; /* אותיות גדולות */
+    text-align: center; /* יישור מרכזי */
+    cursor: pointer; /* סמן מצביע */
+    text-decoration: none; /* הסרת קו תחתון */
+    transition: all 0.3s ease; /* מעבר חלקי */
+}
+
+/* סגנון כפתור מלא (GET IN TOUCH) */
+.header__cta {
+    color: white; /* צבע טקסט לבן */
+    background-color: transparent; /* רקע שקוף */
+    border: 2px solid white; /* מסגרת לבנה */
+    position: relative; /* מיקום יחסי */
+    transition: all 0.3s ease; /* מעבר חלקי */
+}
+
+    .header__cta::before {
+        content: ""; /* הוספת מסגרת חיצונית */
+        position: absolute; /* מיקום אבסולוטי */
+        top: -5px; /* מיקום מעל הכפתור */
+        left: -5px; /* מיקום משמאל לכפתור */
+        right: -5px; /* מיקום מימין לכפתור */
+        bottom: -5px; /* מיקום מתחת לכפתור */
+        border: 2px solid white; /* מסגרת לבנה */
+        transition: all 0.3s ease; /* מעבר חלקי */
+    }
+
+    .header__cta:hover::before {
+        top: -10px; /* שינוי מיקום המסגרת בריחוף */
+        left: -10px;
+        right: -10px;
+        bottom: -10px;
+    }
+
+    .header__cta:hover {
+        background-color: #87CEEB; /* שינוי צבע רקע בריחוף */
+        color: white; /* שינוי צבע טקסט בלבן */
+    }
+
+/* סגנון כפתור גבול בלבד (Contact Us) */
+.hero-content__cta-outline {
+    border: 2px solid #87CEEB; /* מסגרת כחול שמיים */
+    color: #fff; /* צבע טקסט לבן */
+    text-transform: uppercase; /* אותיות גדולות */
+    background-color: transparent; /* רקע שקוף */
+    right: 20px;
+}
+
+    .hero-content__cta-outline:hover {
+        background-color: #87CEEB; /* שינוי רקע בריחוף */
+        color: white; /* שינוי צבע טקסט */
+        text-decoration: none; /* הסרת קו תחתון */
+    }
+
+    .hero-content__cta-outline::before {
+        content: ""; /* הוספת מסגרת חיצונית */
+        position: absolute; /* מיקום אבסולוטי */
+        top: -5px; /* מיקום מעל הכפתור */
+        left: -5px; /* מיקום משמאל */
+        right: -5px; /* מיקום מימין */
+        bottom: -5px; /* מיקום מתחת */
+        border: 2px solid transparent; /* מסגרת שקופה */
+        transition: all 0.3s ease; /* מעבר חלקי */
+    }
+
+    .hero-content__cta-outline:hover::before {
+        top: -10px; /* שינוי מיקום המסגרת בריחוף */
+        left: -10px;
+        right: -10px;
+        bottom: -10px;
+        border-color: #87CEEB; /* צבע מסגרת כחול שמיים */
+    }
+
+/* תכנים בעמודה השמאלית */
+.hero-content {
+    position: relative; /* מיקום יחסי */
+    z-index: 2; /* שכבת קדמה */
+    display: grid; /* תצוגת רשת */
+    grid-template-columns: 1fr 1fr; /* שתי עמודות */
+    gap: 100px; /* מרווח בין עמודות */
+    max-width: 2000px; /* רוחב מרבי */
+    width: 100%; /* רוחב מלא */
+    height: auto; /* גובה אוטומטי */
+    margin: 0 auto; /* מרכז */
+    padding-top: 0vh; /* מרווח עליון */
+    justify-content: center; /* מרכזת */
+    align-items: center; /* יישור מרכזי */
+    margin-bottom: 0; /* אין רווח תחתון */
+}
+
+/* תכנים פנימיים */
+.hero-content__text,
+.hero-content__map {
+    display: flex; /* תצוגת Flex */
+    flex-direction: column; /* כיוון אנכי */
+    justify-content: center; /* יישור למרכז */
+    padding: 20px; /* ריווח פנימי */
+    position: relative; /* מיקום יחסי */
+}
+
+/* מרכז טקסט אנכי */
+.hero-content__text {
+    text-align: left; /* יישור טקסט לשמאל */
+    max-width: 600px; /* רוחב מרבי */
+    justify-self: center; /* יישור עצמי */
+}
+
+.hero-content__subtitle h4 {
+    font-family: "Bebas Neue", sans-serif; /* גופן לכותרת משנה */
+    font-size: 24px; /* גודל גופן */
+    color: #fff; /* צבע טקסט לבן */
+}
+
+.hero-content__highlight {
+    color: #87CEEB; /* צבע טקסט כחול שמיים */
+}
+
+.hero-content__title h1 {
+    font-family: "Bebas Neue", sans-serif; /* גופן כותרת */
+    font-size: 72px; /* גודל גופן */
+    font-weight: regular; /* משקל גופן */
+    line-height: 1.1; /* גובה שורה */
+    margin-bottom: 20px; /* מרווח תחתון */
+    color: #fff; /* צבע טקסט לבן */
+}
+
+.hero-content__highlight-large {
+    color: #87CEEB; /* צבע כחול שמיים */
+}
+
+.hero-content__content {
+    font-family: "Roboto Flex", sans-serif; /* גופן לפסקה */
+    font-size: 18px; /* גודל גופן */
+    color: #fff; /* צבע טקסט */
+    max-width: 500px; /* רוחב מרבי */
+    line-height: 1.6; /* גובה שורה */
+    margin-bottom: 30px; /* מרווח תחתון */
+}
+
+.hero-content__button .hero-content__cta-outline {
+    font-family: "Bebas Neue", sans-serif; /* גופן כפתור */
+    font-size: 22px; /* גודל גופן */
+    padding: 10px 30px; /* ריווח פנימי */
+    color: #fff; /* צבע טקסט */
+    border: 2px solid #87CEEB; /* מסגרת כחול שמיים */
+    text-transform: uppercase; /* אותיות גדולות */
+    text-decoration: none; /* הסרת קו תחתון */
+    font-weight: bold; /* משקל מודגש */
+    display: inline-block; /* בלוק פנימי */
+}
+
+    .hero-content__button .hero-content__cta-outline:hover {
+        background-color: #87CEEB; /* שינוי רקע בריחוף */
+        color: white; /* שינוי צבע טקסט */
+    }
+
+/* עמודה ימנית: מפה */
+.hero-content__map {
+    display: flex; /* תצוגת Flex */
+    justify-content: center; /* מרכז */
+    align-items: center; /* יישור מרכזי */
+    position: relative; /* מיקום יחסי */
+    height: 100%; /* גובה מלא */
+}
+
+/* תמונת המפה */
+.hero-content__hero-map .hero-content__map-img {
+    max-width: 100%; /* רוחב מלא */
+    height: auto; /* גובה אוטומטי */
+    opacity: 0.7; /* שקיפות לתמונה */
+    z-index: 1; /* שכבת קדמה */
+    justify-self: center; /* יישור מרכזי */
+}
+
+/* סגנונות לנקודות על המפה */
+.hero-content__pins {
+    position: absolute; /* מיקום אבסולוטי */
+    top: 0; /* מיקום עליון */
+    left: 0; /* מיקום שמאל */
+    width: 100%; /* רוחב מלא */
+    height: 100%; /* גובה מלא */
+    z-index: 2; /* שכבת קדמה */
+}
+
+/* סגנון נקודת מפה */
+.hero-content__pin {
+    width: 30px; /* רוחב נקודה */
+    height: 30px; /* גובה נקודה */
+    border: 2px solid white; /* מסגרת לבנה */
+    border-radius: 50%; /* פינות עגולות */
+    background-color: transparent; /* רקע שקוף */
+    position: absolute; /* מיקום אבסולוטי */
+    cursor: pointer; /* סמן מצביע */
+    transition: background-color 0.3s ease, transform 0.3s ease; /* מעבר צבע ותזוזה */
+}
+
+    .hero-content__pin::before {
+        content: ''; /* יצירת עיגול פנימי */
+        display: block; /* הצגת הבלוק */
+        width: 10px; /* רוחב עיגול פנימי */
+        height: 10px; /* גובה עיגול פנימי */
+        background-color: white; /* צבע לבן */
+        border-radius: 50%; /* עיגול */
+        margin: 8px auto; /* מיקום עיגול פנימי */
+    }
+
+    .hero-content__pin:hover {
+        background-color: white; /* שינוי צבע רקע בריחוף */
+    }
+
+        .hero-content__pin:hover::before {
+            background-color: #87CEEB; /* שינוי צבע לעיגול פנימי בריחוף */
+        }
+
+/* סגנון נקודה פעילה במפה */
+.hero-content__pin--active {
+    background-color: white; /* רקע לבן לנקודה פעילה */
+    size: 24px;
+}
+
+    .hero-content__pin--active::before {
+        background-color: #87CEEB; /* צבע פנימי כחול לנקודה פעילה */
+    }
+
+    /* הצגת שם העיר בעת לחיצה על נקודה פעילה */
+    .hero-content__pin--active::after {
+        content: attr(data-city); /* הצגת שם העיר מתוך התכונה */
+        position: absolute; /* מיקום אבסולוטי */
+        top: 40px; /* מיקום מעל הנקודה */
+        left: -10px; /* מיקום אופקי */
+        font-size: 12px; /* גודל גופן */
+        color: white; /* צבע טקסט לבן */
+        white-space: nowrap; /* מניעת שבירת שורה */
+    }
+
+/* מיקום הנקודות על המפה */
+.hero-content__pin--1 {
+    top: 15%; /* מיקום אנכי */
+    left: 45%; /* מיקום אופקי */
+}
+
+.hero-content__pin--2 {
+    top: 50%;
+    left: 47%;
+}
+
+.hero-content__pin--3 {
+    top: 94%;
+    left: 50.9%;
+}
+
+.hero-content__pin--4 {
+    top: 58%;
+    left: 46%;
+}
+
+.hero-content__pin--tel-aviv {
+    top: 42%;
+    left: 40%;
+}
+
+    /* סגנון לנקודת תל-אביב כאשר היא פעילה */
+    .hero-content__pin--tel-aviv.hero-content__pin--active {
+        background-color: white; /* רקע לבן */
+    }
+
+        .hero-content__pin--tel-aviv.hero-content__pin--active::before {
+            background-color: #87CEEB; /* צבע כחול לעיגול הפנימי */
+        }
+
+        .hero-content__pin--tel-aviv.hero-content__pin--active::after {
+            content: "Tel-Aviv"; /* שם העיר תל-אביב */
+            position: absolute; /* מיקום אבסולוטי */
+            top: 40px; /* מיקום מעל הנקודה */
+            left: -20px; /* מיקום אופקי */
+            font-size: 18px; /* גודל גופן */
+            color: white; /* צבע טקסט לבן */
+            white-space: nowrap; /* מניעת שבירת שורה */
+        }
+
+/* מיכל לכפתור גלילה */
+.hero-content__scroll-btn-container {
+    position: absolute; /* מיקום אבסולוטי */
+    bottom: 10vh; /* מיקום מלמטה */
+    left: 50%; /* מיקום באמצע */
+    transform: translateX(-50%); /* הזזת המיקום שמאלה */
+    display: flex; /* תצוגת Flex */
+    justify-content: center; /* יישור למרכז */
+    align-items: center; /* יישור אנכי מרכזי */
+    width: 180px; /* רוחב מיכל */
+    height: 180px; /* גובה מיכל */
+    cursor: pointer; /* סמן מצביע */
+}
+
+.hero-content__scroll-btn {
+    position: relative; /* מיקום יחסי */
+    width: 120px; /* רוחב כפתור */
+    height: 120px; /* גובה כפתור */
+    margin-top: 150px; /* מרווח עליון */
+}
+
+.hero-content__scroll-btn-border {
+    position: absolute; /* מיקום אבסולוטי */
+    width: 100%; /* רוחב מלא */
+    height: 100%; /* גובה מלא */
+    animation: rotateBorder 10s linear infinite; /* אנימציה לסיבוב הכפתור */
+}
+
+.hero-content__scroll-btn-text {
+    position: absolute; /* מיקום אבסולוטי */
+    top: 50%; /* מיקום במרכז אנכי */
+    left: 50%; /* מיקום במרכז אופקי */
+    transform: translate(-50%, -50%); /* הזזה למרכז מוחלט */
+    width: 95px; /* רוחב טקסט הכפתור */
+    height: auto; /* גובה אוטומטי */
+    text-align: center; /* יישור טקסט למרכז */
+}
+
+.hero-content__scroll-btn-icon {
+    position: absolute; /* מיקום אבסולוטי */
+    top: 50%; /* מיקום במרכז אנכי */
+    left: 50%; /* מיקום במרכז אופקי */
+    transform: translate(-50%, -50%); /* הזזה למרכז מוחלט */
+    width: 40px; /* רוחב אייקון */
+    height: auto; /* גובה אוטומטי */
+}
+
+/* אנימציית סיבוב למסגרת הכפתור */
+@keyframes rotateBorder {
+    from {
+        transform: rotate(0deg); /* התחלה מ-0 מעלות */
+    }
+
+    to {
+        transform: rotate(300deg); /* סיבוב מלא של 300 מעלות */
+    }
+}
+
+/* מיכל קרדיטים */
+.credit-container {
+    color: #fff; /* צבע טקסט לבן */
+    width: 100%; /* רוחב מלא */
+    height: 100%; /* גובה מלא */
+    z-index: 3; /* שכבת קדמה */
+    position: absolute; /* מיקום אבסולוטי */
+}
+
+.main-section .main-text {
+    color: var(--text-white); /* צבע טקסט לבן */
+}
+
+.section2 {
+    padding: 100px; /* ריווח פנימי של 100px */
+    position: relative; /* מיקום יחסי */
+}
+
+.section2__container {
+    display: flex; /* פריסת פלקס למיקום גמיש */
+    flex-wrap: wrap; /* גלישת רכיבים לשורה הבאה אם אין מקום */
+    width: 100%; /* רוחב של 100% */
+    height: 100%; /* גובה מלא */
+    gap: 60px; /* מרווח של 60px בין רכיבים */
+    position: relative; /* מיקום יחסי */
+}
+
+    .section2__container > * {
+        flex: 1 1 0; /* חלוקה שווה בין כל הרכיבים */
+    }
+
+.section2__image > img {
+    max-width: 100%; /* רוחב מקסימלי 100% */
+    height: auto; /* גובה אוטומטי לשמירת פרופורציות */
+    display: block; /* הצגת בלוק לתמונות */
+}
+
+.section2__content {
+    display: flex; /* פריסת פלקס למיקום גמיש */
+    flex-direction: column; /* מיקום טורים בעמודות */
+    gap: 20px; /* מרווח אחיד בין כל הרכיבים */
+}
+
+/* Смещение заголовков влево */
+.section2__headline {
+    position: relative; /* מיקום יחסי */
+    left: -20%; /* הטיה שמאלה ב-20% */
+    max-width: 80%; /* הגבלת רוחב למקסימום 80% */
+}
+
+.section2__headline-title {
+    font-family: 'Bebas Neue', sans-serif; /* גופן 'Bebas Neue' */
+    font-size: 1.5rem; /* גודל טקסט קטן יחסית לאיזון */
+    text-transform: uppercase; /* אותיות גדולות */
+    margin-bottom: 10px; /* רווח תחתון בין h4 ו-h2 */
+    color: #000; /* צבע טקסט שחור */
+}
+
+.section2__headline-header {
+    font-family: 'Bebas Neue', sans-serif; /* גופן 'Bebas Neue' */
+    font-size: 3.5rem; /* טקסט גדול להדגשה */
+    font-weight: bold; /* טקסט מודגש */
+    line-height: 1.2; /* גובה שורה */
+    text-transform: uppercase; /* אותיות גדולות */
+    padding: 10px; /* ריווח פנימי לטקסט */
+    max-width: 100%; /* רוחב מקסימלי */
+    -webkit-text-stroke: 1px #000; /* הוספת קו מתאר לטקסט */
+    color: transparent; /* טקסט שקוף כדי לראות רק את קו המתאר */
+}
+
+/* Стили для описания с добавлением смещения на 100px */
+.section2__description {
+    max-width: 70%; /* רוחב מקסימלי לתיבת הטקסט */
+    margin-left: -25%; /* הטיה לשמאל עבור התאמה */
+    position: relative; /* מיקום יחסי */
+    left: 240px; /* הטיה ימינה של 100px */
+}
+
+    .section2__description p {
+        font-family: 'Roboto Flex', sans-serif; /* גופן 'Roboto Flex' */
+        font-size: 1rem; /* גודל טקסט רגיל */
+        color: #363839; /* צבע אפור כהה */
+        margin-bottom: 20px; /* ריווח תחתון בין פסקאות */
+    }
+
+/* Стили для кнопки */
+.btn {
+    padding: 12px 36px; /* ריווח פנימי */
+    border: 2px solid #000; /* מסגרת שחורה */
+    font-family: 'Bebas Neue', sans-serif; /* גופן 'Bebas Neue' */
+    font-size: 1.2rem; /* גודל גופן 1.2 רם */
+    text-transform: uppercase; /* אותיות גדולות */
+    background-color: transparent; /* רקע שקוף */
+    color: #000; /* צבע טקסט שחור */
+    cursor: pointer; /* ידית על הכפתור */
+    transition: background-color 0.3s ease, color 0.3s ease; /* מעבר צבע */
+    margin-top: 30px; /* ריווח עליון לכפתור */
+}
+
+    .btn:hover {
+        background-color: #87ceeb; /* צבע רקע בכחול בשעת ריחוף */
+        color: #fff; /* צבע טקסט לבן בריחוף */
+    }
+
+/* Стили для заголовка Why Choose Israel */
+.section2__headline-title .section2__headline-highlight {
+    color: #87ceeb; /* צבע כחול להדגשת המילה Israel */
+}
+
+.section2__headline-header .section2__headline-highlight-large {
+    color: #87ceeb; /* צבע כחול למילה ISRAEL */
+    -webkit-text-stroke: 0; /* ביטול קו המתאר למילה ISRAEL */
+}
+
+.section2__headline-header .section2__headline-textBlack {
+    color: black; /* צבע טקסט שחור */
+    -webkit-text-stroke: 0; /* ביטול קו מתאר */
+}
+
+/* Новые стили для вставки второго изображения справа со смещением влево на 50px */
+.section2__secondary-image {
+    position: absolute; /* מיקום מוחלט */
+    top: 0; /* מיקום למעלה */
+    right: 5%; /* הטיה ימינה ב-5% */
+    width: 10%; /* רוחב תמונה 10% */
+    height: auto; /* גובה אוטומטי לשמירת פרופורציות */
+}
+
+    .section2__secondary-image img {
+        border-radius: 8px; /* עיגול פינות */
+    }
+
+.section2__image {
+    position: relative; /* מיקום יחסי */
+    width: 45%; /* רוחב 45% */
+}
+
+    .section2__image figcaption {
+        position: absolute; /* מיקום מוחלט */
+        transform: rotate(-90deg); /* סיבוב ב-90 מעלות */
+        left: -40px; /* הזזת טקסט שמאלה */
+        top: 50%; /* מיקום אמצע */
+        font-size: 12px; /* גודל טקסט קטן */
+        color: #555; /* צבע אפור כהה */
+    }
+
+/* General button styles */
+.cta,
+.cta-outline {
+    position: relative; /* מיקום יחסי */
+    display: inline-block; /* הצגת קו */
+    padding: 12px 36px; /* ריווח פנימי */
+    font-family: "Bebas Neue", sans-serif; /* גופן 'Bebas Neue' */
+    font-size: 22px; /* גודל גופן 22px */
+    text-transform: uppercase; /* אותיות גדולות */
+    text-align: center; /* יישור מרכזי */
+    cursor: pointer; /* ידית על הכפתור */
+    text-decoration: none; /* ביטול קו תחתון */
+    transition: all 0.3s ease; /* מעבר צבע */
+}
+
+/* Styles for the outline button (Contact Us) */
+.section2__cta-outline {
+    border: 2px solid #87CEEB; /* מסגרת כחולה */
+    color: #fff; /* טקסט לבן */
+    text-transform: uppercase; /* אותיות גדולות */
+    background-color: transparent; /* רקע שקוף */
+}
+
+    .section2__cta-outline:hover {
+        background-color: #87CEEB; /* רקע כחול בריחוף */
+        color: white; /* טקסט לבן בריחוף */
+        text-decoration: none; /* ביטול קו תחתון */
+    }
+
+    .section2__cta-outline::before {
+        content: ""; /* קו מסגרת חיצוני */
+        position: absolute; /* מיקום מוחלט */
+        top: -5px; /* קו מסגרת חיצוני מעל */
+        left: -5px; /* קו מסגרת חיצוני משמאל */
+        right: -5px; /* קו מסגרת חיצוני מימין */
+        bottom: -5px; /* קו מסגרת חיצוני מתחת */
+        border: 2px solid transparent; /* קו מסגרת חיצוני שקוף */
+        transition: all 0.3s ease; /* מעבר קו מסגרת חיצוני */
+    }
+
+    .section2__cta-outline:hover::before {
+        top: -10px; /* מיקום מסגרת חיצונית עליון בריחוף */
+        left: -10px; /* מיקום מסגרת חיצונית שמאלי בריחוף */
+        right: -10px; /* מיקום מסגרת חיצונית ימני בריחוף */
+        bottom: -10px; /* מיקום מסגרת חיצונית תחתון בריחוף */
+        border-color: #87CEEB; /* צבע כחול למסגרת חיצונית בריחוף */
+    }
+
+.black-text {
+    color: #000000 !important; /* טקסט בצבע שחור */
+}
+
+
+/* הגדרות צבעים עיקריים */
+:root {
+    --sky-blue: #87CEEB; /* כחול שמיים */
+    --dark-gray: #363839; /* אפור כהה */
+    --light-gray: #F0F0F0; /* אפור בהיר */
+    --golden-brown: #B19F70; /* חום מוזהב */
+    --text-white: #FFFFFF; /* צבע טקסט לבן */
+    --text-black: #000000; /* צבע טקסט שחור */
+}
+
+/* הגדרות טיפוגרפיה לכותרות */
+h2 {
+    font-family: 'Bebas Neue', sans-serif; /* סוג גופן עבור כותרות */
+    font-size: 70px; /* גודל גופן */
+    color: var(--dark-gray); /* צבע טקסט אפור כהה */
+    margin-bottom: 20px; /* מרווח תחתון */
+}
+
+p, .section3__text {
+    font-family: 'Roboto Flex', sans-serif; /* סוג גופן עבור פסקאות */
+    font-size: 17px; /* גודל גופן */
+    margin: 0; /* ביטול שוליים */
+    padding-bottom: 10px; /* מרווח תחתון */
+}
+
+.section3__highlight {
+    color: var(--golden-brown); /* צבע הדגשה */
+}
+
+/* עיצוב לסקשן */
+.section3--custom {
+    position: relative; /* מיקום יחסי */
+    width: 100%; /* שימוש ברוחב מלא */
+    display: flex; /* תצוגת flex */
+    flex-direction: column; /* סידור בעמודה */
+    padding: 50px 5%; /* רווח פנימי */
+    margin-bottom: 50px; /* מרווח תחתון נוסף */
+    box-sizing: border-box; /* חישוב גודל כולל */
+}
+
+.section3__image-container img {
+    position: absolute; /* מיקום מוחלט */
+    top: 0; /* יישור למעלה */
+    left: 0; /* יישור לשמאל */
+    width: 580px; /* רוחב תמונה */
+    height: 460px; /* גובה תמונה */
+    z-index: -1; /* הצבת התמונה מאחורי כל התוכן */
+}
+
+.section3__absolute-container {
+    display: flex; /* תצוגת flex */
+    gap: 100px; /* רווח בין עמודות */
+    width: 100%; /* שימוש ברוחב מלא */
+    box-sizing: border-box; /* חישוב גודל כולל */
+    padding: 50px 5%; /* רווח פנימי */
+    align-items: flex-start; /* יישור למעלה */
+}
+
+.section3__left-column {
+    flex: 0 0 40%; /* גודל עמודה שמאלית */
+    max-width: 40%; /* רוחב מקסימלי */
+}
+
+.section3__right-column {
+    flex: 1; /* עמודה ימנית תופסת את השאר */
+    max-width: 80%; /* רוחב מקסימלי */
+}
+
+.section3__grid--four-columns {
+    display: flex; /* תצוגת flex */
+    gap: 10px; /* רווח בין עמודות */
+    width: 100%; /* שימוש ברוחב מלא */
+    max-width: 1400px; /* רוחב מקסימלי */
+    justify-content: space-between; /* מרווח שווה בין עמודות */
+    margin: 0 auto; /* מרכז הגריד */
+    padding: 0; /* ביטול רווח פנימי */
+    box-sizing: border-box; /* חישוב גודל כולל */
+}
+
+.section3__column {
+    position: relative; /* מיקום יחסי */
+    width: 350px; /* רוחב עמודה */
+    height: 500px; /* גובה עמודה */
+    flex: 0 0 auto; /* גודל קבוע לכל עמודה */
+    margin-right: 30px; /* מרווח בין עמודות */
+    box-sizing: border-box; /* חישוב גודל כולל */
+}
+
+.section3__image-wrapper {
+    position: relative; /* מיקום יחסי */
+    width: 100%; /* שימוש ברוחב מלא */
+    height: 100%; /* שימוש בגובה מלא */
+    overflow: hidden; /* חיתוך תוכן עודף */
+    cursor: pointer; /* סימון סמן כיד */
+}
+
+.section3__main-image {
+    width: 100%; /* שימוש ברוחב מלא */
+    height: 100%; /* שימוש בגובה מלא */
+    object-fit: cover; /* שמירה על פרופורציות */
+    transition: opacity 0.5s ease; /* מעבר חלק בעוצמת התמונה */
+}
+
+.section3__overlay {
+    position: absolute; /* מיקום מוחלט */
+    top: 0; /* יישור למעלה */
+    left: 0; /* יישור לשמאל */
+    width: 100%; /* שימוש ברוחב מלא */
+    height: 100%; /* שימוש בגובה מלא */
+    display: flex; /* תצוגת flex */
+    align-items: center; /* יישור מרכזי אנכי */
+    justify-content: center; /* יישור מרכזי אופקי */
+    opacity: 0; /* שקיפות מלאה */
+    transition: opacity 0.5s ease; /* מעבר חלק בשקיפות */
+    pointer-events: none; /* ביטול אירועי עכבר */
+    z-index: 2; /* הצבת שכבה מעל */
+}
+
+.section3__hover-image {
+    width: 100%; /* שימוש ברוחב מלא */
+    height: 100%; /* שימוש בגובה מלא */
+    object-fit: cover; /* שמירה על פרופורציות */
+}
+
+.section3__image-wrapper:hover .section3__overlay {
+    opacity: 1; /* הצגת שכבת הכיסוי בהובר */
+}
+
+/* Типографика заголовков */
+h2 {
+    font-family: 'Bebas Neue', sans-serif; /* משפחת פונט */
+    font-size: 70px; /* גודל הפונט */
+    color: var(--dark-gray); /* צבע הפונט */
+    margin-bottom: 20px; /* רווח מלמטה */
+    line-height: 1.2; /* גובה שורה */
+}
+
+.section4__text, .section4__text--black {
+    font-family: 'Roboto Flex', sans-serif; /* משפחת פונט לטקסט */
+    font-size: 17px; /* גודל הפונט */
+    margin: 0; /* ביטול מרווחים חיצוניים */
+    padding-bottom: 10px; /* רווח מלמטה */
+    line-height: 26px; /* גובה שורה בטקסט */
+}
+
+.section4__highlight {
+    color: var(--sky-blue); /* צבע הדגשה */
+}
+
+/* Section Styling */
+.section4 {
+    position: relative; /* מיקום יחסי */
+    width: 100%; /* רוחב 100% */
+    display: flex; /* תצוגת Flex */
+    flex-direction: column; /* כיוון תצוגה אנכי */
+    padding: 20px 5%; /* רווחים פנימיים */
+    margin-bottom: 50px; /* רווח חיצוני מלמטה */
+    box-sizing: border-box; /* מביא בחשבון את ריווחים */
+}
+
+.section4__container {
+    display: flex; /* תצוגת Flex ליישור אופקי */
+    gap: 100px; /* רווח בין עמודות */
+    width: 100%; /* רוחב מלא */
+    box-sizing: border-box; /* מביא בחשבון את ריווחים */
+    padding: 50px 5%; /* ריווח פנימי */
+    align-items: flex-start; /* יישור קצה עליון */
+}
+
+.section4__column--left {
+    flex: 0 0 40%; /* אחוז מרחב 40% */
+    max-width: 40%; /* רוחב מקסימלי */
+    align-self: flex-start; /* יישור לפי קצה עליון */
+}
+
+.section4__column--right {
+    flex: 1; /* אחוז מרחב נשאר */
+    max-width: 43%; /* רוחב מקסימלי */
+    align-self: flex-start; /* יישור לפי קצה עליון */
+}
+
+.section4__slider {
+    position: relative; /* מיקום יחסי */
+    overflow: hidden; /* ביטול גלילה */
+    width: 100%; /* רוחב מלא */
+    margin-top: 50px; /* רווח מלמעלה */
+}
+
+.section4__slider-container {
+    display: flex; /* תצוגת Flex */
+    flex-direction: row; /* כיוון אופקי */
+    gap: 20px; /* רווח בין סליידים */
+    transition: transform 0.5s ease; /* מעבר חלק */
+}
+
+.section4__slide {
+    width: 90%; /* רוחב סלייד */
+    min-width: 25%; /* רוחב מינימלי */
+    flex: 0 0 auto; /* גודל קבוע */
+    position: relative; /* מיקום יחסי */
+}
+
+    .section4__slide img {
+        width: 100%; /* רוחב מלא */
+        height: auto; /* גובה אוטומטי */
+        object-fit: cover; /* חיתוך לפי גודל */
+        position: relative; /* מיקום יחסי */
+    }
+
+/* Стили для кнопки Contact Us */
+.section4__cta--outline {
+    position: absolute; /* מיקום מוחלט */
+    bottom: 100px; /* מרחק מלמטה */
+    left: 65px; /* מרחק משמאל */
+    padding: 12px 36px; /* ריווח פנימי */
+    font-family: "Bebas Neue", sans-serif; /* משפחת פונט */
+    font-size: 22px; /* גודל פונט */
+    text-transform: uppercase; /* אותיות גדולות */
+    text-align: center; /* יישור טקסט למרכז */
+    cursor: pointer; /* מצביע יד */
+    text-decoration: none; /* ביטול קו תחתון */
+    transition: all 0.3s ease; /* מעבר חלק */
+    border: 2px solid #87CEEB; /* צבע גבול */
+    color: #ffffff; /* צבע טקסט לבן */
+    background-color: transparent; /* רקע שקוף */
+    z-index: 2; /* מעל התמונה */
+}
+
+    .section4__cta--outline:hover {
+        background-color: #87CEEB; /* צבע רקע בכחול בעת מעבר עכבר */
+        color: white; /* צבע טקסט לבן */
+        text-decoration: none; /* ביטול קו תחתון */
+    }
+
+    .section4__cta--outline::before {
+        content: ""; /* תוכן ריק */
+        position: absolute; /* מיקום מוחלט */
+        top: -5px; /* מרחק מלמעלה */
+        left: -5px; /* מרחק משמאל */
+        right: -5px; /* מרחק מימין */
+        bottom: -5px; /* מרחק מלמטה */
+        border: 2px solid transparent; /* גבול שקוף */
+        transition: all 0.3s ease; /* מעבר חלק */
+    }
+
+    .section4__cta--outline:hover::before {
+        top: -10px; /* מרחק מלמעלה בהגדלה */
+        left: -10px; /* מרחק משמאל בהגדלה */
+        right: -10px; /* מרחק מימין בהגדלה */
+        bottom: -10px; /* מרחק מלמטה בהגדלה */
+        border-color: #87CEEB; /* צבע גבול בעת מעבר עכבר */
+    }
+
+.section4__controls {
+    position: absolute; /* מיקום מוחלט */
+    top: 50%; /* באמצע בגובה */
+    width: 100%; /* רוחב מלא */
+    display: flex; /* תצוגת Flex */
+    justify-content: space-between; /* יישור בין קצוות */
+    transform: translateY(-50%); /* הורדה ב-50% למרכז */
+    z-index: 2; /* מעל התוכן */
+}
+
+.section4__control-button {
+    background: rgba(0, 0, 0, 0.5); /* רקע כהה שקוף */
+    color: var(--text-white); /* צבע טקסט לבן */
+    border: none; /* ללא גבול */
+    padding: 10px; /* ריווח פנימי */
+    cursor: pointer; /* מצביע יד */
+    transition: background 0.3s ease; /* מעבר חלק */
+}
+
+    .section4__control-button:hover {
+        background: var(--sky-blue); /* רקע כחול בעת מעבר עכבר */
+    }
+
+/* טיפוגרפיה לכותרות */
+h2 {
+    font-family: 'Bebas Neue', sans-serif; /* גופן לכותרת */
+    font-size: 70px; /* גודל טקסט */
+    color: var(--dark-gray); /* צבע הטקסט */
+    margin-bottom: 20px; /* מרווח תחתון לכותרת */
+    line-height: 1.2; /* נוסף ליישור עם הטקסט */
+}
+
+p, .text {
+    font-family: 'Roboto Flex', sans-serif; /* גופן לטקסט */
+    font-size: 17px; /* גודל טקסט */
+    margin: 0; /* ללא מרווחים חיצוניים */
+    padding-bottom: 10px; /* מרווח תחתון לטקסט */
+    line-height: 26px; /* מרווח בין שורות */
+}
+
+/* עיצוב כללי לסקשן section5 */
+.section5 {
+    padding: 50px 5%; /* ריווח מסביב לסקשן */
+    margin-bottom: 50px; /* מרווח תחתון לסקשן */
+    box-sizing: border-box; /* התייחסות לריווח ולגבולות */
+    width: 100%; /* רוחב מלא לסקשן */
+    height: auto; /* גובה אוטומטי */
+}
+
+/* רשת לסקשן */
+.section5__grid-container {
+    display: grid; /* שימוש ברשת */
+    grid-template-columns: 2fr 3fr 250px; /* העמודה השלישית ברוחב קבוע של 250px */
+    gap: 20px; /* מרווח בין עמודות לשיפור חזותי */
+    align-items: center; /* יישור אנכי של האלמנטים */
+}
+
+/* עמודה ראשונה */
+.section5__first-column {
+    display: grid; /* הפעלת רשת עבור תת-רשת */
+    grid-template-columns: 1fr 1fr; /* תת-רשת עם שתי עמודות */
+    gap: 5px; /* מרווח בין אלמנטים בתת-רשת */
+}
+
+/* החלק השמאלי של תת-רשת */
+.section5__left-grid {
+    display: flex; /* הפעלת flexbox */
+    align-items: center; /* יישור אנכי */
+    justify-content: center; /* יישור אופקי */
+}
+
+.section5__image-left {
+    width: 250px; /* רוחב התמונה */
+    height: 240px; /* גובה התמונה */
+    object-fit: cover; /* שמירה על הפרופורציות של התמונה */
+}
+
+/* החלק הימני של תת-רשת */
+.section5__right-grid {
+    display: flex; /* הפעלת flexbox */
+    flex-direction: column; /* פורמט עמודות */
+    gap: 10px; /* מרווח בין אלמנטים */
+    align-items: center; /* יישור אופקי */
+    justify-content: center; /* יישור אנכי */
+}
+
+.section5__image-right-top,
+.section5__image-right-bottom {
+    width: 100%; /* רוחב 100% בתת-רשת */
+    height: 100%; /* גובה 100% בתת-רשת */
+    object-fit: cover; /* שמירה על הפרופורציות של התמונה */
+}
+
+/* עמודה מרכזית */
+.section5__second-column {
+    display: flex; /* הפעלת flexbox */
+    flex-direction: column; /* פורמט עמודות */
+    justify-content: center; /* יישור אנכי */
+    align-items: center; /* יישור אופקי */
+    gap: 20px; /* מרווח בין האלמנטים בתוך העמודה */
+    text-align: left; /* יישור טקסט לשמאל */
+    padding: 0 20px; /* ריווח אופקי */
+    width: 100%; /* רוחב מלא של העמודה */
+}
+
+    .section5__second-column > * {
+        text-align: left; /* יישור טקסט לשמאל */
+        width: 65%; /* הגבלת רוחב בתוך העמודה */
+    }
+
+.section5__heading {
+    font-family: 'Bebas Neue', sans-serif; /* גופן לכותרת */
+    color: var(--dark-gray); /* צבע הכותרת */
+    margin-bottom: 20px; /* מרווח תחתון לכותרת */
+    justify-content: center; /* יישור מרכזי לכותרת */
+    align-items: center; /* יישור מרכזי לכותרת */
+}
+
+.section5__highlight {
+    color: var(--sky-blue); /* צבע הדגשה לטקסט */
+}
+
+.section5__text {
+    font-family: 'Roboto Flex', sans-serif; /* גופן לטקסט */
+    font-size: 17px; /* גודל טקסט */
+    line-height: 26px; /* מרווח בין שורות */
+    margin-bottom: 20px; /* מרווח תחתון לטקסט */
+    justify-content: center; /* יישור מרכזי לטקסט */
+    align-items: center; /* יישור מרכזי לטקסט */
+}
+
+/* עיצוב לכפתור בסקשן "section5" */
+.section5 .cta-outline {
+    position: relative; /* מיקום יחסי */
+    display: inline-block; /* שורת-בלוק עבור כפתור */
+    padding: 12px 36px; /* ריווח פנימי */
+    font-family: "Bebas Neue", sans-serif; /* גופן לכפתור */
+    font-size: 22px; /* גודל טקסט לכפתור */
+    text-transform: uppercase; /* שינוי טקסט לאותיות גדולות */
+    text-align: center; /* יישור טקסט במרכז */
+    cursor: pointer; /* מצביע בצורת חץ */
+    text-decoration: none; /* הסרת קו תחתון */
+    transition: all 0.3s ease; /* מעברים בעת ריחוף */
+    border: 2px solid #87CEEB; /* גבול כחול */
+    color: #fff; /* צבע טקסט */
+    background-color: transparent; /* רקע שקוף */
+}
+
+    .section5 .cta-outline:hover {
+        background-color: #87CEEB; /* רקע כחול בריחוף */
+        color: white; /* טקסט לבן בריחוף */
+        text-decoration: none; /* הסרת קו תחתון בריחוף */
+    }
+
+    .section5 .cta-outline::before {
+        content: ""; /* תוכן ריק לפסבדו-אלמנט */
+        position: absolute; /* מיקום אבסולוטי */
+        top: -5px; /* מרווח למעלה */
+        left: -5px; /* מרווח משמאל */
+        right: -5px; /* מרווח מימין */
+        bottom: -5px; /* מרווח למטה */
+        border: 2px solid transparent; /* גבול שקוף */
+        transition: all 0.3s ease; /* מעבר חלק */
+    }
+
+    .section5 .cta-outline:hover::before {
+        top: -10px; /* מרווח עליון בריחוף */
+        left: -10px; /* מרווח שמאלי בריחוף */
+        right: -10px; /* מרווח ימני בריחוף */
+        bottom: -10px; /* מרווח תחתון בריחוף */
+        border-color: #87CEEB; /* צבע הגבול בריחוף */
+    }
+
+/* עמודה שלישית */
+.section5__third-column {
+    display: flex; /* הפעלת flexbox */
+    align-items: center; /* יישור אנכי */
+    justify-content: center; /* יישור אופקי */
+}
+
+.section5__image-right {
+    width: 250px; /* רוחב התמונה */
+    height: 240px; /* גובה התמונה */
+    object-fit: cover; /* שמירה על הפרופורציות של התמונה */
+}
+
+/* Общая секция футера */
+.footer-section {
+    width: 100%;
+    height: auto;
+    position: relative;
+}
+
+/* Верхний блок с градиентом и изображением */
+.footer-gradient-section {
+    position: relative;
+    width: 100%;
+    height: 50vh; /* Половина высоты секции */
+    justify-content: center;
+    align-items: center;
+}
+
+.footer-gradient-overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, #87CEEB 75%, #FFFFFF 100%);
+    z-index: 1;
+}
+
+.footer-gradient-image {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+}
+
+/* Нижний блок с изображением по всей ширине */
+.footer-full-image {
+    width: 100%;
+    height: auto;
+}
+
+    .footer-full-image img {
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+    }
+
+.footer-gradient-section__background-image {
+    position: absolute;
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    padding: 9.3%;
+}
+
+
+
+.subscription-section {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -40%);
+    z-index: 20;
+    padding: 50px 0;
+    width: 80%;
+}
+
+.subscription-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+    gap: 200px;
+}
+
+.content-right {
+    flex: 1;
+    max-width: 300px;
+    text-align: left;
+}
+
+.content-logo {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.content-right .contact-info {
+    font-family: 'Roboto Flex', sans-serif;
+    font-size: 1rem;
+    color: #fff;
+}
+
+    .content-right .contact-info p {
+        margin: 10px 0;
+    }
+
+.subscription-form {
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 40px;
+    border-radius: 12px;
+    max-width: 800px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    position: relative;
+    z-index: 21;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+    .subscription-form:hover {
+        transform: scale(1.02);
+        box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+    }
+
+    .subscription-form .form-row {
+        display: flex;
+        justify-content: space-between;
+        gap: 20px;
+    }
+
+    .subscription-form .form-group {
+        flex: 1;
+    }
+
+    .subscription-form label {
+        font-family: 'Roboto Flex', sans-serif;
+        font-size: 1.1rem;
+        color: #333;
+    }
+
+    .subscription-form input[type="text"],
+    .subscription-form input[type="email"] {
+        width: 100%;
+        padding: 12px;
+        border: none;
+        border-bottom: 2px solid #333;
+        background-color: transparent;
+        font-family: 'Roboto Flex', sans-serif;
+        font-size: 1rem;
+        color: #333;
+    }
+
+        .subscription-form input[type="text"]:focus,
+        .subscription-form input[type="email"]:focus {
+            outline: none;
+            border-bottom: 2px solid #87ceeb;
+        }
+
+    .subscription-form input[type="checkbox"] {
+        margin-right: 10px;
+    }
+
+    .subscription-form .checkbox-label {
+        display: flex;
+        align-items: center;
+        font-family: 'Roboto Flex', sans-serif;
+        font-size: 1rem;
+        color: #333;
+    }
+
+    .subscription-form .submit-btn {
+        padding: 14px 40px;
+        border: 2px solid #000;
+        font-family: 'Bebas Neue', sans-serif;
+        font-size: 1.2rem;
+        text-transform: uppercase;
+        background-color: transparent;
+        color: #000;
+        cursor: pointer;
+        transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+    }
+
+        .subscription-form .submit-btn:hover {
+            background-color: #87ceeb;
+            color: #fff;
+            transform: scale(1.05);
+        }
+
+.footer-full-image {
+    position: relative;
+    height: auto;
+}
+
+.info-block {
+    width: 100%;
+    padding: 10px 0;
+    text-align: center;
+    color: #fff;
+    margin: 0;
+    position: relative;
+    bottom: -300px;
+}
+
+.info-content {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    margin: 0 auto;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+    .info-content .copyright {
+        flex: 1;
+        text-align: left;
+        font-family: 'Roboto Flex', sans-serif;
+        font-size: 1rem;
+    }
+
+.footer-content .payment-icons {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+    .footer-content .payment-icons img {
+        height: 30px;
+        width: auto;
+    }
+
+.footer-content .info-links {
+    flex: 1;
+    text-align: right;
+}
+
+.info-content .info-links a {
+    font-family: 'Roboto Flex', sans-serif;
+    font-size: 1rem;
+    color: #fff;
+    text-decoration: none;
+    margin-left: 15px;
+    transition: color 0.3s ease;
+}
+
+.info-content .footer-links a:hover {
+    color: #87ceeb;
+}
+
+.header__nav-item .submenu {
+    display: none; /* Hide submenu by default */
+    position: absolute;
+    background-color: white;
+    list-style: none;
+    padding: 0;
+}
+
+.header__nav-item:hover .submenu {
+    display: block; /* Show submenu on hover */
+}

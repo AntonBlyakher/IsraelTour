@@ -1,0 +1,127 @@
+/* הגדרות צבעים עיקריים */
+:root {
+	--sky-blue: #87CEEB; /* כחול שמיים */
+	--dark-gray: #363839; /* אפור כהה */
+	--light-gray: #F0F0F0; /* אפור בהיר */
+	--golden-brown: #B19F70; /* חום מוזהב */
+	--text-white: #FFFFFF; /* צבע טקסט לבן */
+	--text-black: #000000; /* צבע טקסט שחור */
+}
+
+/* הגדרות טיפוגרפיה לכותרות */
+h2 {
+	font-family: 'Bebas Neue', sans-serif; /* סוג גופן עבור כותרות */
+	font-size: 70px; /* גודל גופן */
+	color: var(--dark-gray); /* צבע טקסט אפור כהה */
+	margin-bottom: 20px; /* מרווח תחתון */
+}
+
+p, .section3__text {
+	font-family: 'Roboto Flex', sans-serif; /* סוג גופן עבור פסקאות */
+	font-size: 17px; /* גודל גופן */
+	margin: 0; /* ביטול שוליים */
+	padding-bottom: 10px; /* מרווח תחתון */
+}
+
+.section3__highlight {
+	color: var(--golden-brown); /* צבע הדגשה */
+}
+
+/* עיצוב לסקשן */
+.section3--custom {
+	position: relative; /* מיקום יחסי */
+	width: 100%; /* שימוש ברוחב מלא */
+	display: flex; /* תצוגת flex */
+	flex-direction: column; /* סידור בעמודה */
+	padding: 50px 5%; /* רווח פנימי */
+	margin-bottom: 50px; /* מרווח תחתון נוסף */
+	box-sizing: border-box; /* חישוב גודל כולל */
+}
+
+.section3__image-container img {
+	position: absolute; /* מיקום מוחלט */
+	top: 0; /* יישור למעלה */
+	left: 0; /* יישור לשמאל */
+	width: 580px; /* רוחב תמונה */
+	height: 460px; /* גובה תמונה */
+	z-index: -1; /* הצבת התמונה מאחורי כל התוכן */
+}
+
+.section3__absolute-container {
+	display: flex; /* תצוגת flex */
+	gap: 100px; /* רווח בין עמודות */
+	width: 100%; /* שימוש ברוחב מלא */
+	box-sizing: border-box; /* חישוב גודל כולל */
+	padding: 50px 5%; /* רווח פנימי */
+	align-items: flex-start; /* יישור למעלה */
+}
+
+.section3__left-column {
+	flex: 0 0 40%; /* גודל עמודה שמאלית */
+	max-width: 40%; /* רוחב מקסימלי */
+}
+
+.section3__right-column {
+	flex: 1; /* עמודה ימנית תופסת את השאר */
+	max-width: 80%; /* רוחב מקסימלי */
+}
+
+.section3__grid--four-columns {
+	display: flex; /* תצוגת flex */
+	gap: 10px; /* רווח בין עמודות */
+	width: 100%; /* שימוש ברוחב מלא */
+	max-width: 1400px; /* רוחב מקסימלי */
+	justify-content: space-between; /* מרווח שווה בין עמודות */
+	margin: 0 auto; /* מרכז הגריד */
+	padding: 0; /* ביטול רווח פנימי */
+	box-sizing: border-box; /* חישוב גודל כולל */
+}
+
+.section3__column {
+	position: relative; /* מיקום יחסי */
+	width: 350px; /* רוחב עמודה */
+	height: 500px; /* גובה עמודה */
+	flex: 0 0 auto; /* גודל קבוע לכל עמודה */
+	margin-right: 30px; /* מרווח בין עמודות */
+	box-sizing: border-box; /* חישוב גודל כולל */
+}
+
+.section3__image-wrapper {
+	position: relative; /* מיקום יחסי */
+	width: 100%; /* שימוש ברוחב מלא */
+	height: 100%; /* שימוש בגובה מלא */
+	overflow: hidden; /* חיתוך תוכן עודף */
+	cursor: pointer; /* סימון סמן כיד */
+}
+
+.section3__main-image {
+	width: 100%; /* שימוש ברוחב מלא */
+	height: 100%; /* שימוש בגובה מלא */
+	object-fit: cover; /* שמירה על פרופורציות */
+	transition: opacity 0.5s ease; /* מעבר חלק בעוצמת התמונה */
+}
+
+.section3__overlay {
+	position: absolute; /* מיקום מוחלט */
+	top: 0; /* יישור למעלה */
+	left: 0; /* יישור לשמאל */
+	width: 100%; /* שימוש ברוחב מלא */
+	height: 100%; /* שימוש בגובה מלא */
+	display: flex; /* תצוגת flex */
+	align-items: center; /* יישור מרכזי אנכי */
+	justify-content: center; /* יישור מרכזי אופקי */
+	opacity: 0; /* שקיפות מלאה */
+	transition: opacity 0.5s ease; /* מעבר חלק בשקיפות */
+	pointer-events: none; /* ביטול אירועי עכבר */
+	z-index: 2; /* הצבת שכבה מעל */
+}
+
+.section3__hover-image {
+	width: 100%; /* שימוש ברוחב מלא */
+	height: 100%; /* שימוש בגובה מלא */
+	object-fit: cover; /* שמירה על פרופורציות */
+}
+
+.section3__image-wrapper:hover .section3__overlay {
+	opacity: 1; /* הצגת שכבת הכיסוי בהובר */
+}

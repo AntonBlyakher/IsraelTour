@@ -1,0 +1,185 @@
+/* Основный стиль секции */
+.section2 {
+	padding: 100px; /* ריווח פנימי של 100px */
+	position: relative; /* מיקום יחסי */
+}
+
+.section2__container {
+	display: flex; /* פריסת פלקס למיקום גמיש */
+	flex-wrap: wrap; /* גלישת רכיבים לשורה הבאה אם אין מקום */
+	width: 100%; /* רוחב של 100% */
+	height: 100%; /* גובה מלא */
+	gap: 60px; /* מרווח של 60px בין רכיבים */
+	position: relative; /* מיקום יחסי */
+}
+
+.section2__container > * {
+	flex: 1 1 0; /* חלוקה שווה בין כל הרכיבים */
+}
+
+.section2__image > img {
+	max-width: 100%; /* רוחב מקסימלי 100% */
+	height: auto; /* גובה אוטומטי לשמירת פרופורציות */
+	display: block; /* הצגת בלוק לתמונות */
+}
+
+.section2__content {
+	display: flex; /* פריסת פלקס למיקום גמיש */
+	flex-direction: column; /* מיקום טורים בעמודות */
+	gap: 20px; /* מרווח אחיד בין כל הרכיבים */
+}
+
+/* Смещение заголовков влево */
+.section2__headline {
+	position: relative; /* מיקום יחסי */
+	left: -20%; /* הטיה שמאלה ב-20% */
+	max-width: 80%; /* הגבלת רוחב למקסימום 80% */
+}
+
+.section2__headline-title {
+	font-family: 'Bebas Neue', sans-serif; /* גופן 'Bebas Neue' */
+	font-size: 1.5rem; /* גודל טקסט קטן יחסית לאיזון */
+	text-transform: uppercase; /* אותיות גדולות */
+	margin-bottom: 10px; /* רווח תחתון בין h4 ו-h2 */
+	color: #000; /* צבע טקסט שחור */
+}
+
+.section2__headline-header {
+	font-family: 'Bebas Neue', sans-serif; /* גופן 'Bebas Neue' */
+	font-size: 3.5rem; /* טקסט גדול להדגשה */
+	font-weight: bold; /* טקסט מודגש */
+	line-height: 1.2; /* גובה שורה */
+	text-transform: uppercase; /* אותיות גדולות */
+	padding: 10px; /* ריווח פנימי לטקסט */
+	max-width: 100%; /* רוחב מקסימלי */
+	-webkit-text-stroke: 1px #000; /* הוספת קו מתאר לטקסט */
+	color: transparent; /* טקסט שקוף כדי לראות רק את קו המתאר */
+}
+
+/* Стили для описания с добавлением смещения на 100px */
+.section2__description {
+	max-width: 70%; /* רוחב מקסימלי לתיבת הטקסט */
+	margin-left: -25%; /* הטיה לשמאל עבור התאמה */
+	position: relative; /* מיקום יחסי */
+	left: 240px; /* הטיה ימינה של 100px */
+}
+
+.section2__description p {
+	font-family: 'Roboto Flex', sans-serif; /* גופן 'Roboto Flex' */
+	font-size: 1rem; /* גודל טקסט רגיל */
+	color: #363839; /* צבע אפור כהה */
+	margin-bottom: 20px; /* ריווח תחתון בין פסקאות */
+}
+
+/* Стили для кнопки */
+.btn {
+	padding: 12px 36px; /* ריווח פנימי */
+	border: 2px solid #000; /* מסגרת שחורה */
+	font-family: 'Bebas Neue', sans-serif; /* גופן 'Bebas Neue' */
+	font-size: 1.2rem; /* גודל גופן 1.2 רם */
+	text-transform: uppercase; /* אותיות גדולות */
+	background-color: transparent; /* רקע שקוף */
+	color: #000; /* צבע טקסט שחור */
+	cursor: pointer; /* ידית על הכפתור */
+	transition: background-color 0.3s ease, color 0.3s ease; /* מעבר צבע */
+	margin-top: 30px; /* ריווח עליון לכפתור */
+}
+
+.btn:hover {
+	background-color: #87ceeb; /* צבע רקע בכחול בשעת ריחוף */
+	color: #fff; /* צבע טקסט לבן בריחוף */
+}
+
+/* Стили для заголовка Why Choose Israel */
+.section2__headline-title .section2__headline-highlight {
+	color: #87ceeb; /* צבע כחול להדגשת המילה Israel */
+}
+
+.section2__headline-header .section2__headline-highlight-large {
+	color: #87ceeb; /* צבע כחול למילה ISRAEL */
+	-webkit-text-stroke: 0; /* ביטול קו המתאר למילה ISRAEL */
+}
+
+.section2__headline-header .section2__headline-textBlack {
+	color: black; /* צבע טקסט שחור */
+	-webkit-text-stroke: 0; /* ביטול קו מתאר */
+}
+
+/* Новые стили для вставки второго изображения справа со смещением влево на 50px */
+.section2__secondary-image {
+	position: absolute; /* מיקום מוחלט */
+	top: 0; /* מיקום למעלה */
+	right: 5%; /* הטיה ימינה ב-5% */
+	width: 10%; /* רוחב תמונה 10% */
+	height: auto; /* גובה אוטומטי לשמירת פרופורציות */
+}
+
+.section2__secondary-image img {
+	border-radius: 8px; /* עיגול פינות */
+}
+
+.section2__image {
+	position: relative; /* מיקום יחסי */
+	width: 45%; /* רוחב 45% */
+}
+
+.section2__image figcaption {
+	position: absolute; /* מיקום מוחלט */
+	transform: rotate(-90deg); /* סיבוב ב-90 מעלות */
+	left: -40px; /* הזזת טקסט שמאלה */
+	top: 50%; /* מיקום אמצע */
+	font-size: 12px; /* גודל טקסט קטן */
+	color: #555; /* צבע אפור כהה */
+}
+
+/* General button styles */
+.cta,
+.cta-outline {
+	position: relative; /* מיקום יחסי */
+	display: inline-block; /* הצגת קו */
+	padding: 12px 36px; /* ריווח פנימי */
+	font-family: "Bebas Neue", sans-serif; /* גופן 'Bebas Neue' */
+	font-size: 22px; /* גודל גופן 22px */
+	text-transform: uppercase; /* אותיות גדולות */
+	text-align: center; /* יישור מרכזי */
+	cursor: pointer; /* ידית על הכפתור */
+	text-decoration: none; /* ביטול קו תחתון */
+	transition: all 0.3s ease; /* מעבר צבע */
+}
+
+/* Styles for the outline button (Contact Us) */
+.section2__cta-outline {
+	border: 2px solid #87CEEB; /* מסגרת כחולה */
+	color: #fff; /* טקסט לבן */
+	text-transform: uppercase; /* אותיות גדולות */
+	background-color: transparent; /* רקע שקוף */
+}
+
+.section2__cta-outline:hover {
+	background-color: #87CEEB; /* רקע כחול בריחוף */
+	color: white; /* טקסט לבן בריחוף */
+	text-decoration: none; /* ביטול קו תחתון */
+}
+
+.section2__cta-outline::before {
+	content: ""; /* קו מסגרת חיצוני */
+	position: absolute; /* מיקום מוחלט */
+	top: -5px; /* קו מסגרת חיצוני מעל */
+	left: -5px; /* קו מסגרת חיצוני משמאל */
+	right: -5px; /* קו מסגרת חיצוני מימין */
+	bottom: -5px; /* קו מסגרת חיצוני מתחת */
+	border: 2px solid transparent; /* קו מסגרת חיצוני שקוף */
+	transition: all 0.3s ease; /* מעבר קו מסגרת חיצוני */
+}
+
+.section2__cta-outline:hover::before {
+	top: -10px; /* מיקום מסגרת חיצונית עליון בריחוף */
+	left: -10px; /* מיקום מסגרת חיצונית שמאלי בריחוף */
+	right: -10px; /* מיקום מסגרת חיצונית ימני בריחוף */
+	bottom: -10px; /* מיקום מסגרת חיצונית תחתון בריחוף */
+	border-color: #87CEEB; /* צבע כחול למסגרת חיצונית בריחוף */
+}
+
+.black-text {
+	color: #000000 !important; /* טקסט בצבע שחור */
+}
